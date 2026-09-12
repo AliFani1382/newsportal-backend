@@ -1,0 +1,12 @@
+C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.Domain\bin\Debug\net9.0\NewsPortal.Domain.deps.json
+C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.Domain\bin\Debug\net9.0\NewsPortal.Domain.dll
+C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.Domain\bin\Debug\net9.0\NewsPortal.Domain.pdb
+C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.Domain\obj\Debug\net9.0\NewsPortal.Domain.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.Domain\obj\Debug\net9.0\NewsPortal.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.Domain\obj\Debug\net9.0\NewsPortal.Domain.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.Domain\obj\Debug\net9.0\NewsPortal.Domain.AssemblyInfo.cs
+C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.Domain\obj\Debug\net9.0\NewsPortal.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.Domain\obj\Debug\net9.0\NewsPortal.Domain.dll
+C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.Domain\obj\Debug\net9.0\refint\NewsPortal.Domain.dll
+C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.Domain\obj\Debug\net9.0\NewsPortal.Domain.pdb
+C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.Domain\obj\Debug\net9.0\ref\NewsPortal.Domain.dll

@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "dgSpecHash": "BQj4qAyRn0Q=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\Newsportal2\\files (1)\\src\\NewsPortal.Application\\NewsPortal.Application.csproj",
+  "expectedPackageFiles": [
+    "D:\\CSsharp\\nugetPackages\\fluentvalidation\\12.1.1\\fluentvalidation.12.1.1.nupkg.sha512",
+    "D:\\CSsharp\\nugetPackages\\fluentvalidation.aspnetcore\\11.3.1\\fluentvalidation.aspnetcore.11.3.1.nupkg.sha512",
+    "D:\\CSsharp\\nugetPackages\\fluentvalidation.dependencyinjectionextensions\\12.1.1\\fluentvalidation.dependencyinjectionextensions.12.1.1.nupkg.sha512",
+    "D:\\CSsharp\\nugetPackages\\microsoft.aspnetcore.http\\2.3.12\\microsoft.aspnetcore.http.2.3.12.nupkg.sha512",
+    "D:\\CSsharp\\nugetPackages\\microsoft.aspnetcore.http.abstractions\\2.3.11\\microsoft.aspnetcore.http.abstractions.2.3.11.nupkg.sha512",
+    "D:\\CSsharp\\nugetPackages\\microsoft.aspnetcore.http.features\\2.3.10\\microsoft.aspnetcore.http.features.2.3.10.nupkg.sha512",
+    "D:\\CSsharp\\nugetPackages\\microsoft.aspnetcore.webutilities\\2.3.11\\microsoft.aspnetcore.webutilities.2.3.11.nupkg.sha512",
+    "D:\\CSsharp\\nugetPackages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "D:\\CSsharp\\nugetPackages\\microsoft.extensions.objectpool\\8.0.11\\microsoft.extensions.objectpool.8.0.11.nupkg.sha512",
+    "D:\\CSsharp\\nugetPackages\\microsoft.extensions.options\\8.0.2\\microsoft.extensions.options.8.0.2.nupkg.sha512",
+    "D:\\CSsharp\\nugetPackages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "D:\\CSsharp\\nugetPackages\\microsoft.net.http.headers\\2.3.11\\microsoft.net.http.headers.2.3.11.nupkg.sha512",
+    "D:\\CSsharp\\nugetPackages\\system.buffers\\4.6.0\\system.buffers.4.6.0.nupkg.sha512",
+    "D:\\CSsharp\\nugetPackages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json.",
+      "projectPath": "C:\\Users\\Lenovo\\Desktop\\Newsportal2\\files (1)\\src\\NewsPortal.Application\\NewsPortal.Application.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Lenovo\\Desktop\\Newsportal2\\files (1)\\src\\NewsPortal.Application\\NewsPortal.Application.csproj",
+      "targetGraphs": []
+    }
+  ]
+}

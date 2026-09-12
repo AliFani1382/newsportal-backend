@@ -1,0 +1,483 @@
+2026-09-09 03:40:19.986 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 03:40:20.033 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 03:40:20.147 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 03:40:20.148 -07:00 [INF] Hosting environment: Development
+2026-09-09 03:40:20.148 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 03:49:38.581 -07:00 [INF] HTTP POST /api/auth/forgot-password responded 200 in 1350.0558 ms
+2026-09-09 03:52:05.117 -07:00 [INF] HTTP POST /api/auth/reset-password responded 200 in 751.2379 ms
+2026-09-09 03:55:49.806 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 03:55:49.860 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 03:55:50.059 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 03:55:50.059 -07:00 [INF] Hosting environment: Development
+2026-09-09 03:55:50.059 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 03:56:07.782 -07:00 [INF] HTTP POST /api/auth/forgot-password responded 200 in 1177.2354 ms
+2026-09-09 03:57:11.674 -07:00 [INF] HTTP POST /api/auth/reset-password responded 200 in 840.9624 ms
+2026-09-09 03:58:48.616 -07:00 [INF] HTTP POST /api/auth/forgot-password responded 200 in 95.1908 ms
+2026-09-09 03:59:21.162 -07:00 [INF] HTTP POST /api/auth/reset-password responded 400 in 132.7807 ms
+2026-09-09 04:00:20.140 -07:00 [INF] HTTP POST /api/auth/forgot-password responded 200 in 104.5541 ms
+2026-09-09 04:00:46.665 -07:00 [INF] HTTP POST /api/auth/reset-password responded 400 in 45.6854 ms
+2026-09-09 04:01:39.372 -07:00 [INF] HTTP POST /api/auth/forgot-password responded 200 in 127.4996 ms
+2026-09-09 04:02:28.713 -07:00 [INF] HTTP POST /api/auth/reset-password responded 400 in 2.9734 ms
+2026-09-09 04:36:34.896 -07:00 [ERR] Hosting failed to start
+System.IO.IOException: Failed to bind to address http://localhost:5059.
+ ---> System.AggregateException: One or more errors occurred. (An attempt was made to access a socket in a way forbidden by its access permissions.) (An attempt was made to access a socket in a way forbidden by its access permissions.)
+ ---> System.Net.Sockets.SocketException (10013): An attempt was made to access a socket in a way forbidden by its access permissions.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+ ---> (Inner Exception #1) System.Net.Sockets.SocketException (10013): An attempt was made to access a socket in a way forbidden by its access permissions.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)<---
+
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2026-09-09 04:38:32.064 -07:00 [ERR] Hosting failed to start
+System.IO.IOException: Failed to bind to address http://localhost:5059.
+ ---> System.AggregateException: One or more errors occurred. (An attempt was made to access a socket in a way forbidden by its access permissions.) (An attempt was made to access a socket in a way forbidden by its access permissions.)
+ ---> System.Net.Sockets.SocketException (10013): An attempt was made to access a socket in a way forbidden by its access permissions.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+ ---> (Inner Exception #1) System.Net.Sockets.SocketException (10013): An attempt was made to access a socket in a way forbidden by its access permissions.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)<---
+
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2026-09-09 04:40:53.728 -07:00 [ERR] Hosting failed to start
+System.IO.IOException: Failed to bind to address http://localhost:5059.
+ ---> System.AggregateException: One or more errors occurred. (An attempt was made to access a socket in a way forbidden by its access permissions.) (An attempt was made to access a socket in a way forbidden by its access permissions.)
+ ---> System.Net.Sockets.SocketException (10013): An attempt was made to access a socket in a way forbidden by its access permissions.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+ ---> (Inner Exception #1) System.Net.Sockets.SocketException (10013): An attempt was made to access a socket in a way forbidden by its access permissions.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)<---
+
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2026-09-09 04:43:03.433 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 04:43:03.516 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 04:43:03.713 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 04:43:03.714 -07:00 [INF] Hosting environment: Development
+2026-09-09 04:43:03.714 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 04:43:56.387 -07:00 [ERR] An exception occurred in the database while saving changes for context type 'NewsPortal.Infrastructure.Persistence.ApplicationDBContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailVerificationTokens_Users_UserId". The conflict occurred in database "NewsPortalDb", table "dbo.Users", column 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:36517453-03fa-4f2e-a23c-1d0f129cd6b5
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailVerificationTokens_Users_UserId". The conflict occurred in database "NewsPortalDb", table "dbo.Users", column 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:36517453-03fa-4f2e-a23c-1d0f129cd6b5
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2026-09-09 04:46:07.269 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 04:46:07.309 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 04:46:07.403 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 04:46:07.403 -07:00 [INF] Hosting environment: Development
+2026-09-09 04:46:07.404 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 04:46:37.436 -07:00 [ERR] An exception occurred in the database while saving changes for context type 'NewsPortal.Infrastructure.Persistence.ApplicationDBContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailVerificationTokens_Users_UserId". The conflict occurred in database "NewsPortalDb", table "dbo.Users", column 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:a35c5ff5-1883-42bb-a5b6-033631294e5a
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_EmailVerificationTokens_Users_UserId". The conflict occurred in database "NewsPortalDb", table "dbo.Users", column 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:a35c5ff5-1883-42bb-a5b6-033631294e5a
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2026-09-09 04:49:23.922 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 04:49:23.981 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 04:49:24.085 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 04:49:24.086 -07:00 [INF] Hosting environment: Development
+2026-09-09 04:49:24.086 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 04:50:00.872 -07:00 [INF] HTTP POST /api/Auth/register responded 200 in 2990.4130 ms
+2026-09-09 04:53:05.589 -07:00 [INF] HTTP POST /api/auth/verify-email responded 200 in 528.3898 ms
+2026-09-09 04:54:15.085 -07:00 [INF] HTTP POST /api/auth/verify-email responded 400 in 90.8332 ms
+2026-09-09 04:54:49.923 -07:00 [INF] HTTP POST /api/auth/verify-email responded 400 in 74.2504 ms
+2026-09-09 05:00:46.828 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 05:00:46.879 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 05:00:47.042 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 05:00:47.043 -07:00 [INF] Hosting environment: Development
+2026-09-09 05:00:47.043 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 05:01:23.418 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 2152.5839 ms
+2026-09-09 05:02:43.764 -07:00 [INF] HTTP POST /api/Auth/login responded 401 in 495.4207 ms
+2026-09-09 05:03:33.645 -07:00 [INF] HTTP POST /api/Auth/register responded 200 in 691.5348 ms
+2026-09-09 05:11:35.008 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 05:11:35.037 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 05:11:35.129 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 05:11:35.130 -07:00 [INF] Hosting environment: Development
+2026-09-09 05:11:35.130 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 05:12:23.042 -07:00 [INF] HTTP POST /api/auth/resend-verification responded 200 in 1996.2704 ms
+2026-09-09 05:14:20.454 -07:00 [INF] HTTP POST /api/auth/resend-verification responded 200 in 184.8784 ms
+2026-09-09 05:26:50.698 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 05:26:50.751 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 05:26:50.876 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 05:26:50.877 -07:00 [INF] Hosting environment: Development
+2026-09-09 05:26:50.877 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 05:27:57.363 -07:00 [INF] HTTP POST /api/Auth/login responded 401 in 1984.7799 ms
+2026-09-09 05:28:27.595 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 875.6638 ms
+2026-09-09 05:28:50.062 -07:00 [INF] HTTP GET /api/notifications responded 200 in 533.6182 ms
+2026-09-09 05:31:26.532 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 477.1641 ms
+2026-09-09 05:32:05.377 -07:00 [INF] HTTP GET /api/notifications/unread-count responded 200 in 201.5525 ms
+2026-09-09 05:32:39.208 -07:00 [INF] HTTP PUT /api/notifications/1/read responded 200 in 387.4515 ms
+2026-09-09 05:33:16.343 -07:00 [INF] HTTP GET /api/notifications/unread-count responded 200 in 103.3689 ms
+2026-09-09 05:34:29.573 -07:00 [INF] HTTP PUT /api/notifications/read-all responded 200 in 119.9733 ms
+2026-09-09 05:47:59.485 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 05:47:59.521 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 05:47:59.652 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 05:47:59.652 -07:00 [INF] Hosting environment: Development
+2026-09-09 05:47:59.652 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 05:48:41.533 -07:00 [INF] HTTP POST /api/newsletter/subscribe responded 400 in 717.4718 ms
+2026-09-09 05:49:19.233 -07:00 [INF] HTTP POST /api/newsletter/subscribe responded 200 in 973.8926 ms
+2026-09-09 05:49:53.568 -07:00 [INF] HTTP POST /api/newsletter/subscribe responded 200 in 243.7411 ms
+2026-09-09 05:50:33.071 -07:00 [INF] HTTP POST /api/newsletter/unsubscribe responded 200 in 181.5230 ms
+2026-09-09 05:51:29.201 -07:00 [INF] HTTP POST /api/newsletter/subscribe responded 200 in 140.7022 ms
+2026-09-09 05:52:00.919 -07:00 [INF] HTTP POST /api/newsletter/subscribe responded 400 in 107.3053 ms
+2026-09-09 05:52:56.732 -07:00 [INF] HTTP POST /api/newsletter/unsubscribe responded 200 in 135.1082 ms
+2026-09-09 06:03:08.599 -07:00 [WRN] The foreign key property 'NewsTag.NewsId1' was created in shadow state because a conflicting property with the simple name 'NewsId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2026-09-09 06:03:08.620 -07:00 [WRN] The foreign key property 'NewsTag.TagId1' was created in shadow state because a conflicting property with the simple name 'TagId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2026-09-09 06:04:37.986 -07:00 [WRN] The foreign key property 'NewsTag.NewsId1' was created in shadow state because a conflicting property with the simple name 'NewsId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2026-09-09 06:04:38.006 -07:00 [WRN] The foreign key property 'NewsTag.TagId1' was created in shadow state because a conflicting property with the simple name 'TagId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2026-09-09 06:05:18.703 -07:00 [WRN] The foreign key property 'NewsTag.NewsId1' was created in shadow state because a conflicting property with the simple name 'NewsId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2026-09-09 06:05:18.725 -07:00 [WRN] The foreign key property 'NewsTag.TagId1' was created in shadow state because a conflicting property with the simple name 'TagId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2026-09-09 06:17:57.545 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 06:17:57.562 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 06:17:57.614 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 06:17:57.615 -07:00 [INF] Hosting environment: Development
+2026-09-09 06:17:57.615 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 06:19:04.636 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 905.6022 ms
+2026-09-09 06:19:47.181 -07:00 [INF] HTTP GET /api/tags responded 200 in 99.7986 ms
+2026-09-09 06:21:08.048 -07:00 [INF] HTTP POST /api/tags responded 200 in 282.8820 ms
+2026-09-09 06:21:30.709 -07:00 [INF] HTTP POST /api/tags responded 409 in 58.4448 ms
+2026-09-09 06:22:06.460 -07:00 [INF] HTTP GET /api/tags/1 responded 200 in 89.7944 ms
+2026-09-09 06:23:07.590 -07:00 [INF] HTTP PUT /api/tags/1 responded 200 in 94.8401 ms
+2026-09-09 06:24:01.235 -07:00 [INF] HTTP POST /api/tags responded 200 in 92.8246 ms
+2026-09-09 06:24:36.449 -07:00 [INF] HTTP DELETE /api/tags/2 responded 200 in 163.9043 ms
+2026-09-09 06:53:56.252 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 06:53:56.279 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 06:53:56.335 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 06:53:56.335 -07:00 [INF] Hosting environment: Development
+2026-09-09 06:53:56.335 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 06:54:34.208 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 1464.6304 ms
+2026-09-09 06:57:01.733 -07:00 [INF] HTTP POST /api/News responded 201 in 2139.8809 ms
+2026-09-09 06:58:45.481 -07:00 [INF] HTTP PUT /api/News/11 responded 404 in 653.3322 ms
+2026-09-09 06:59:50.307 -07:00 [INF] HTTP GET /api/tags responded 200 in 246.8776 ms
+2026-09-09 07:01:01.986 -07:00 [INF] HTTP PUT /api/News/11 responded 200 in 379.6267 ms
+2026-09-09 07:02:25.069 -07:00 [INF] HTTP POST /api/tags responded 200 in 172.0207 ms
+2026-09-09 07:03:42.109 -07:00 [INF] HTTP PUT /api/News/11 responded 200 in 281.7850 ms
+2026-09-09 08:25:18.498 -07:00 [WRN] The foreign key property 'NewsImage.NewsId1' was created in shadow state because a conflicting property with the simple name 'NewsId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2026-09-09 09:21:10.781 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 09:21:10.829 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 09:21:10.910 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 09:21:10.911 -07:00 [INF] Hosting environment: Development
+2026-09-09 09:21:10.911 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 09:26:54.716 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 09:26:54.772 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 09:26:54.865 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 09:26:54.866 -07:00 [INF] Hosting environment: Development
+2026-09-09 09:26:54.866 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 09:29:05.332 -07:00 [INF] HTTP POST /api/News responded 401 in 395.8402 ms
+2026-09-09 09:29:40.130 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 2270.7205 ms
+2026-09-09 09:29:59.979 -07:00 [INF] HTTP POST /api/News responded 401 in 47.3091 ms
+2026-09-09 09:30:13.950 -07:00 [INF] HTTP POST /api/News responded 401 in 3.1925 ms
+2026-09-09 09:31:18.148 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 730.6811 ms
+2026-09-09 09:31:45.581 -07:00 [ERR] An exception occurred in the database while saving changes for context type 'NewsPortal.Infrastructure.Persistence.ApplicationDBContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert duplicate key row in object 'dbo.News' with unique index 'IX_News_Slug'. The duplicate key value is (خبر-تستی).
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:05d0b850-a010-4627-a70d-0ca940c0fd3c
+Error Number:2601,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert duplicate key row in object 'dbo.News' with unique index 'IX_News_Slug'. The duplicate key value is (خبر-تستی).
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:05d0b850-a010-4627-a70d-0ca940c0fd3c
+Error Number:2601,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2026-09-09 09:33:49.947 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 09:33:50.065 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 09:33:50.562 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 09:33:50.563 -07:00 [INF] Hosting environment: Development
+2026-09-09 09:33:50.563 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 09:35:08.233 -07:00 [INF] HTTP POST /api/News responded 401 in 277.1616 ms
+2026-09-09 09:35:36.700 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 2161.2644 ms
+2026-09-09 09:36:00.298 -07:00 [INF] HTTP POST /api/News responded 201 in 3006.5154 ms
+2026-09-09 09:39:16.085 -07:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-09-09 09:39:16.575 -07:00 [INF] HTTP PUT /api/News/13 responded 200 in 892.4068 ms
+2026-09-09 09:42:06.503 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 09:42:06.536 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 09:42:06.641 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 09:42:06.642 -07:00 [INF] Hosting environment: Development
+2026-09-09 09:42:06.642 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 09:43:34.304 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 2535.4855 ms
+2026-09-09 09:44:04.754 -07:00 [INF] HTTP DELETE /api/News/13 responded 401 in 128.3579 ms
+2026-09-09 09:44:28.198 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 657.6699 ms
+2026-09-09 09:44:49.872 -07:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-09-09 09:44:50.854 -07:00 [INF] HTTP DELETE /api/News/13 responded 200 in 1410.3937 ms
+2026-09-09 09:57:51.453 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 09:57:51.534 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 09:57:51.712 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 09:57:51.712 -07:00 [INF] Hosting environment: Development
+2026-09-09 09:57:51.712 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 09:58:22.018 -07:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-09-09 09:58:22.460 -07:00 [INF] HTTP GET /api/News responded 200 in 2066.1215 ms
+2026-09-09 10:01:55.940 -07:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-09-09 10:01:56.321 -07:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-09-09 10:01:56.512 -07:00 [INF] HTTP GET /api/News/11/related responded 200 in 693.8784 ms
+2026-09-09 10:12:56.469 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 10:12:56.502 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 10:12:56.571 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 10:12:56.571 -07:00 [INF] Hosting environment: Development
+2026-09-09 10:12:56.571 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 10:13:31.664 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 1576.5140 ms
+2026-09-09 10:14:14.597 -07:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-09-09 10:14:14.857 -07:00 [INF] HTTP GET /api/News/11 responded 200 in 635.4313 ms
+2026-09-09 10:15:27.359 -07:00 [INF] HTTP POST /api/News/11/view responded 200 in 284.9125 ms
+2026-09-09 10:20:13.545 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 10:20:13.566 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 10:20:13.621 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 10:20:13.621 -07:00 [INF] Hosting environment: Development
+2026-09-09 10:20:13.621 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 10:20:50.956 -07:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-09-09 10:20:51.206 -07:00 [INF] HTTP GET /api/News/popular responded 200 in 1053.8444 ms
+2026-09-09 10:30:15.053 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 10:30:15.079 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 10:30:15.140 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 10:30:15.140 -07:00 [INF] Hosting environment: Development
+2026-09-09 10:30:15.140 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 10:30:46.020 -07:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-09-09 10:30:46.152 -07:00 [INF] HTTP GET /api/News/featured responded 200 in 489.8088 ms
+2026-09-09 10:32:10.703 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 434.2424 ms
+2026-09-09 10:39:05.900 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 10:39:05.934 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 10:39:06.103 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 10:39:06.103 -07:00 [INF] Hosting environment: Development
+2026-09-09 10:39:06.103 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 10:40:33.349 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 2648.7132 ms
+2026-09-09 10:41:37.395 -07:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-09-09 10:41:37.812 -07:00 [INF] HTTP PUT /api/News/11/featured responded 200 in 1022.5043 ms
+2026-09-09 10:42:12.092 -07:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-09-09 10:42:12.321 -07:00 [INF] HTTP GET /api/News/featured responded 200 in 387.6436 ms
+2026-09-09 10:43:08.049 -07:00 [INF] HTTP GET /api/News/11 responded 200 in 152.1076 ms
+2026-09-09 10:46:46.504 -07:00 [INF] Now listening on: https://localhost:7285
+2026-09-09 10:46:46.552 -07:00 [INF] Now listening on: http://localhost:5059
+2026-09-09 10:46:46.718 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-09 10:46:46.722 -07:00 [INF] Hosting environment: Development
+2026-09-09 10:46:46.722 -07:00 [INF] Content root path: C:\Users\Lenovo\Desktop\Newsportal2\files (1)\src\NewsPortal.API
+2026-09-09 10:47:19.889 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 2785.7553 ms
+2026-09-09 10:48:09.485 -07:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-09-09 10:48:10.508 -07:00 [INF] HTTP PUT /api/News/11/featured responded 200 in 1584.2806 ms
+2026-09-09 10:49:00.100 -07:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-09-09 10:49:00.332 -07:00 [INF] HTTP GET /api/News/featured responded 200 in 419.4884 ms

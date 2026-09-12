@@ -1,0 +1,35 @@
+﻿@NewsPortal.API_HostAddress = http://localhost:5059
+
+### دریافت همه خبرها با صفحه‌بندی
+GET {{NewsPortal.API_HostAddress}}/api/News?pageNumber=1&pageSize=10
+Accept: application/json
+
+###
+
+### جستجو در خبرها
+GET {{NewsPortal.API_HostAddress}}/api/News?pageNumber=1&pageSize=10&search=اقتصاد
+Accept: application/json
+
+###
+
+### فیلتر بر اساس دسته‌بندی
+GET {{NewsPortal.API_HostAddress}}/api/News?pageNumber=1&pageSize=10&categoryId=1
+Accept: application/json
+
+###
+
+### فیلتر بر اساس شهر
+GET {{NewsPortal.API_HostAddress}}/api/News?pageNumber=1&pageSize=10&cityId=1
+Accept: application/json
+
+###
+
+### فیلتر بر اساس نویسنده
+GET {{NewsPortal.API_HostAddress}}/api/News?pageNumber=1&pageSize=10&writerId=1
+Accept: application/json
+
+###
+
+### ترکیب جستجو و فیلترها
+GET {{NewsPortal.API_HostAddress}}/api/News?pageNumber=1&pageSize=5&search=ورزشی&categoryId=2&cityId=1
+Accept: application/json
