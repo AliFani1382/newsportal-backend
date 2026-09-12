@@ -1,3 +1,0 @@
-wwwroot\uploads\news\d79344c6e1224928ae768c10446a1181.png
-wwwroot\uploads\news\default.jpg
-wwwroot\uploads\news\e570f3f3d59e46bf9aeb397c8ad2f81c.png

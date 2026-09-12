@@ -1,5 +1,0 @@
-2026-08-27 06:48:32.170 -07:00 [INF] Now listening on: https://localhost:7285
-2026-08-27 06:48:32.216 -07:00 [INF] Now listening on: http://localhost:5059
-2026-08-27 06:48:32.330 -07:00 [INF] Application started. Press Ctrl+C to shut down.
-2026-08-27 06:48:32.330 -07:00 [INF] Hosting environment: Development
-2026-08-27 06:48:32.330 -07:00 [INF] Content root path: D:\NewsPortal\ٍExtracted\NewsPortal_API\NewsPortal.API
