@@ -101,5 +101,28 @@ NewsPortal
 * **Infrastructure:** Database access, Entity Framework Core, repositories, external services, and infrastructure implementations.
 
 This separation helps keep the codebase maintainable, testable, and easier to extend.
+## 🔐 Authentication & Authorization
+
+The API uses JWT-based authentication and role-based authorization to secure protected endpoints.
+
+### Authentication
+
+* User registration and login
+* JWT access tokens
+* Password hashing
+* Email verification
+* Password reset flow
+* Protected API endpoints
+
+### Authorization
+
+* Role-based access control
+* User and Admin roles
+* Admin-only operations
+* Resource ownership checks for user-owned content
+* Authorization using ASP.NET Core `[Authorize]`
+
+Authentication and authorization are integrated into the ASP.NET Core request pipeline to protect application resources and enforce access rules.
+
 
 
