@@ -344,6 +344,44 @@ Contains infrastructure and data access implementations, including:
 * Data persistence
 
 This structure keeps responsibilities separated and makes the project easier to understand and maintain.
+## 📌 Key Features
+
+The backend provides the core functionality required for a modern news platform, including:
+
+* JWT authentication and role-based authorization
+* User and Admin management
+* News creation, editing, review, and publication workflow
+* Categories, cities, and tags
+* SEO-friendly unique slugs
+* Multiple images per news article
+* Comments and comment moderation
+* Reactions and bookmarks
+* Popular, featured, and related news
+* Notifications
+* Email verification
+* Password reset
+* Newsletter subscription
+* Request validation with FluentValidation
+* Global exception handling
+* Structured logging with Serilog
+* Rate limiting and security headers
+* Swagger / OpenAPI documentation
+## 📊 Project Status
+
+The backend development is currently complete and provides the main API functionality required by the NewsPortal application.
+
+The project has been developed as a practical full-stack project with a focus on:
+
+* Clean and maintainable backend architecture
+* Authentication and authorization
+* Database management with Entity Framework Core
+* Real-world business workflows
+* API validation and error handling
+* Security and application logging
+* RESTful API design
+
+The backend is designed to work with the NewsPortal React frontend through RESTful APIs.
+
 
 
 
