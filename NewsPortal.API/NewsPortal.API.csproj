@@ -4,7 +4,8 @@
 		<TargetFramework>net9.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-	</PropertyGroup>
+	  <UserSecretsId>9310b312-70b2-477c-8bdd-018fc8e7e09b</UserSecretsId>
+       </PropertyGroup>
 
 	<ItemGroup>
 	  <Compile Remove="wwwroot\uploads\NewFolder\**" />

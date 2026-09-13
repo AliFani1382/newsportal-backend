@@ -9,4 +9,3 @@
 *.db-wal
 [Ll]og/
 [Ll]ogs/
-appsettings.Development.json
