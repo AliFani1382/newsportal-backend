@@ -5,7 +5,8 @@ namespace NewsPortal.Application.Interfaces;
 
 public interface IEmailVerificationService
 {
-    Task<ApiResponse<bool>> VerifyEmailAsync(VerifyEmailDto dto);
+    Task<ApiResponse<VerifyEmailResponseDto>> VerifyEmailAsync(
+      VerifyEmailDto dto);
 
     Task<ApiResponse<bool>> ResendVerificationAsync(
         ResendVerificationDto dto);

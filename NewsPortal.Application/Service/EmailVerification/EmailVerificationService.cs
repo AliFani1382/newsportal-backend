@@ -24,15 +24,15 @@ public sealed class EmailVerificationService : IEmailVerificationService
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<ApiResponse<bool>> VerifyEmailAsync(
-    VerifyEmailDto dto)
+    public async Task<ApiResponse<VerifyEmailResponseDto>> VerifyEmailAsync(
+       VerifyEmailDto dto)
     {
         var verificationToken =
             await _tokenRepository.GetValidTokenAsync(dto.Token);
 
         if (verificationToken is null)
         {
-            return ApiResponse<bool>.Failure(
+            return ApiResponse<VerifyEmailResponseDto>.Failure(
                 ApiErrorCode.ValidationError,
                 "توکن تأیید ایمیل نامعتبر یا منقضی شده است.");
         }
@@ -42,7 +42,7 @@ public sealed class EmailVerificationService : IEmailVerificationService
 
         if (user is null)
         {
-            return ApiResponse<bool>.Failure(
+            return ApiResponse<VerifyEmailResponseDto>.Failure(
                 ApiErrorCode.NotFound,
                 "کاربر مورد نظر پیدا نشد.");
         }
@@ -52,10 +52,14 @@ public sealed class EmailVerificationService : IEmailVerificationService
 
         await _unitOfWork.CommitAsync();
 
-        return ApiResponse<bool>.Success(
-            true,
+        return ApiResponse<VerifyEmailResponseDto>.Success(
+            new VerifyEmailResponseDto
+            {
+                IsVerified = true
+            },
             "ایمیل با موفقیت تأیید شد.");
     }
+    
     public async Task<ApiResponse<bool>> ResendVerificationAsync(
     ResendVerificationDto dto)
     {

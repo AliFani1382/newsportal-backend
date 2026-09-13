@@ -314,14 +314,7 @@ public NewsService(
                 "یکی از تگ‌های انتخاب شده پیدا نشد");
         }
 
-        var slug =
-            _slugService.Generate(dto.Title);
-
-        if (await _newsRepository.ExistsBySlugAsync(slug))
-        {
-            slug =
-                await _slugService.GenerateUniqueAsync(slug);
-        }
+        var slug = await GenerateUniqueSlugAsync(dto.Title);
 
         var savedImages = new List<NewsImage>();
 
@@ -612,6 +605,29 @@ public async Task<ApiResponse<bool>> DeleteAsync(
         return ApiResponse<NewsDto>.Success(
             MapToDto(news),
             "وضعیت خبر با موفقیت تغییر کرد");
+    }
+
+    private async Task<string> GenerateUniqueSlugAsync(
+    string value,
+    int? excludeId = null)
+    {
+        var slug = _slugService.Generate(value);
+
+        if (string.IsNullOrWhiteSpace(slug))
+        {
+            slug = "news";
+        }
+
+        var original = slug;
+        var counter = 1;
+
+        while (await _newsRepository.ExistsBySlugAsync(slug, excludeId))
+        {
+            slug = $"{original}-{counter}";
+            counter++;
+        }
+
+        return slug;
     }
 
     private static NewsDto MapToDto(
