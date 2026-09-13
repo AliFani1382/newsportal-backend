@@ -210,6 +210,32 @@ The API includes endpoints for:
 Swagger provides documentation for available endpoints, request models, response models, and authentication requirements.
 
 The API follows a consistent response structure to make communication between the backend and frontend predictable.
+## 🛡️ Error Handling, Validation & Logging
+
+The backend includes centralized mechanisms for validation, error handling, and application logging.
+
+### Validation
+
+* FluentValidation for request validation
+* Validation of user input and API requests
+* Consistent validation error responses
+* Business rule validation in the application layer
+
+### Error Handling
+
+* Global exception handling middleware
+* Consistent API error responses
+* Centralized handling of unexpected application errors
+* Separation of technical errors from user-facing API responses
+
+### Logging
+
+* Serilog for structured application logging
+* Logging of important application events and errors
+* Centralized logging configuration
+
+These mechanisms improve API reliability, maintainability, and troubleshooting during development and production use.
+
 
 
 
