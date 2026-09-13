@@ -302,6 +302,49 @@ dotnet build
 Then run the API using Visual Studio or the .NET CLI.
 
 Once the API is running, Swagger can be used to explore and test the available endpoints.
+## 📂 Project Structure & Key Components
+
+The backend is organized into separate projects based on responsibility:
+
+### NewsPortal.API
+
+Contains the HTTP API layer, including:
+
+* Controllers
+* Middleware
+* API configuration
+* Authentication and authorization setup
+
+### NewsPortal.Application
+
+Contains the application and business logic, including:
+
+* Services
+* DTOs
+* Interfaces
+* Validators
+* Application workflows
+
+### NewsPortal.Domain
+
+Contains the core domain models, including:
+
+* Entities
+* Enums
+* Domain models
+
+### NewsPortal.Infrastructure
+
+Contains infrastructure and data access implementations, including:
+
+* Entity Framework Core
+* Database context and configurations
+* Repositories
+* Infrastructure services
+* Data persistence
+
+This structure keeps responsibilities separated and makes the project easier to understand and maintain.
+
 
 
 
