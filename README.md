@@ -62,4 +62,44 @@ The API is consumed by a React frontend and exposes its endpoints through RESTfu
 * CORS
 * Security Headers
 * Git & GitHub
+* ## 🏗️ Architecture
+
+The backend follows a layered architecture that separates API responsibilities, application logic, domain models, and infrastructure concerns.
+
+```text
+NewsPortal
+│
+├── NewsPortal.API
+│   ├── Controllers
+│   ├── Middleware
+│   └── Configuration
+│
+├── NewsPortal.Application
+│   ├── DTOs
+│   ├── Services
+│   ├── Interfaces
+│   ├── Validators
+│   └── Business Logic
+│
+├── NewsPortal.Domain
+│   ├── Entities
+│   ├── Enums
+│   └── Domain Models
+│
+└── NewsPortal.Infrastructure
+    ├── Persistence
+    ├── Repositories
+    ├── Services
+    └── Data Access
+```
+
+### Layer Responsibilities
+
+* **API:** HTTP endpoints, controllers, middleware, authentication configuration, and API configuration.
+* **Application:** Business logic, services, DTOs, interfaces, validation, and application workflows.
+* **Domain:** Core entities, enums, and domain models.
+* **Infrastructure:** Database access, Entity Framework Core, repositories, external services, and infrastructure implementations.
+
+This separation helps keep the codebase maintainable, testable, and easier to extend.
+
 
