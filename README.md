@@ -150,6 +150,43 @@ Administrators can:
 * Manage users and other protected resources
 
 This workflow separates content submission from publication and provides basic moderation and authorization for the news platform.
+## 🗄️ Database & Entity Framework Core
+
+NewsPortal uses **SQL Server** as its relational database and **Entity Framework Core** for data access and database management.
+
+### Database
+
+* SQL Server
+* Entity Framework Core
+* Code-first approach
+* EF Core migrations
+* Entity relationships and configurations
+* LINQ-based data queries
+
+### Data Access
+
+The Infrastructure layer is responsible for database access and persistence.
+
+Repositories are used to abstract data access operations, while the Unit of Work pattern coordinates database changes across related operations.
+
+Entity configurations are separated from the domain entities where appropriate to keep persistence concerns organized.
+
+### Main Data Areas
+
+The database manages data related to:
+
+* Users and roles
+* News articles
+* Categories and cities
+* Tags
+* News images
+* Comments
+* Reactions
+* Bookmarks
+* Notifications
+* Newsletter subscriptions
+* Email verification and password reset workflows
+
 
 
 
