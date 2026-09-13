@@ -24,3 +24,42 @@ NewsPortal provides the backend services required for a modern news platform, in
 * Logging and API security features
 
 The API is consumed by a React frontend and exposes its endpoints through RESTful APIs.
+## 🛠️ Tech Stack
+
+### Backend
+
+* C#
+* .NET 9
+* ASP.NET Core Web API
+* Entity Framework Core
+* LINQ
+* RESTful APIs
+* Dependency Injection
+* JWT Authentication & Authorization
+* FluentValidation
+
+### Database
+
+* SQL Server
+* Entity Framework Core
+* EF Core Migrations
+
+### Architecture & Patterns
+
+* Layered Architecture
+* Repository Pattern
+* Unit of Work
+* DTOs
+* Service Layer
+* SOLID Principles
+
+### Development & Infrastructure
+
+* Swagger / OpenAPI
+* Serilog
+* Global Exception Handling
+* Rate Limiting
+* CORS
+* Security Headers
+* Git & GitHub
+
