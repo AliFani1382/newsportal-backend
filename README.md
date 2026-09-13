@@ -123,6 +123,34 @@ The API uses JWT-based authentication and role-based authorization to secure pro
 * Authorization using ASP.NET Core `[Authorize]`
 
 Authentication and authorization are integrated into the ASP.NET Core request pipeline to protect application resources and enforce access rules.
+## 📰 News Workflow & Publication
+
+NewsPortal implements a publication workflow that allows users to submit news while giving administrators control over the publishing process.
+
+### News Statuses
+
+* **Draft** — News that is still being prepared.
+* **PendingReview** — News submitted by a regular user and waiting for administrator review.
+* **Published** — News approved and available for public access.
+
+### User Workflow
+
+Regular users can submit news through the API. Submitted news is placed in the `PendingReview` status and can be reviewed by an administrator before publication.
+
+Users can also manage their own content according to the application's authorization and ownership rules.
+
+### Admin Workflow
+
+Administrators can:
+
+* Review submitted news
+* Publish approved news
+* Manage news content
+* Access administrative operations
+* Manage users and other protected resources
+
+This workflow separates content submission from publication and provides basic moderation and authorization for the news platform.
+
 
 
 
