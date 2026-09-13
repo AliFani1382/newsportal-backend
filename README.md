@@ -255,6 +255,54 @@ The API includes several security mechanisms to protect endpoints and control ac
 * Validation of incoming API requests
 
 These security measures are integrated into the ASP.NET Core application pipeline and help provide a safer and more controlled API environment.
+## ⚙️ Configuration & Running the Project
+
+### Prerequisites
+
+Make sure the following tools are installed:
+
+* .NET 9 SDK
+* SQL Server or SQL Server LocalDB
+* Visual Studio 2022 or another compatible .NET development environment
+
+### Configuration
+
+Before running the API, configure the required application settings, including:
+
+* Database connection string
+* JWT authentication settings
+* CORS configuration
+* File upload settings
+* Logging configuration
+
+Sensitive configuration values should be provided through local configuration or environment-specific settings and should not be committed to source control.
+
+### Run the Project
+
+Clone the repository and open the solution in Visual Studio.
+
+Restore dependencies:
+
+```bash
+dotnet restore
+```
+
+Apply the database migrations if required:
+
+```bash
+dotnet ef database update
+```
+
+Build the solution:
+
+```bash
+dotnet build
+```
+
+Then run the API using Visual Studio or the .NET CLI.
+
+Once the API is running, Swagger can be used to explore and test the available endpoints.
+
 
 
 
