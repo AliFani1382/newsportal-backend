@@ -235,6 +235,27 @@ The backend includes centralized mechanisms for validation, error handling, and 
 * Centralized logging configuration
 
 These mechanisms improve API reliability, maintainability, and troubleshooting during development and production use.
+## 🔒 Security & API Protection
+
+The API includes several security mechanisms to protect endpoints and control access to application resources.
+
+### Authentication & Access Control
+
+* JWT-based authentication
+* Role-based authorization
+* Protected API endpoints
+* User and Admin access levels
+* Resource ownership checks
+
+### API Protection
+
+* Rate limiting to help control excessive requests
+* CORS configuration for controlled frontend access
+* Security headers for improved HTTP security
+* Validation of incoming API requests
+
+These security measures are integrated into the ASP.NET Core application pipeline and help provide a safer and more controlled API environment.
+
 
 
 
