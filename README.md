@@ -186,6 +186,30 @@ The database manages data related to:
 * Notifications
 * Newsletter subscriptions
 * Email verification and password reset workflows
+## 📡 API Documentation & Swagger
+
+The backend provides RESTful API endpoints for the NewsPortal frontend and other API clients.
+
+Swagger / OpenAPI is integrated into the project to provide interactive API documentation and make endpoint testing easier during development.
+
+### API Areas
+
+The API includes endpoints for:
+
+* Authentication and user management
+* News and news workflows
+* Categories, cities, and tags
+* Comments and moderation
+* Reactions and bookmarks
+* Notifications
+* Newsletter subscriptions
+* Email verification
+* Password reset
+* Profile management
+
+Swagger provides documentation for available endpoints, request models, response models, and authentication requirements.
+
+The API follows a consistent response structure to make communication between the backend and frontend predictable.
 
 
 
