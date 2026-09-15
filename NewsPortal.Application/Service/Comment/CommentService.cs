@@ -3,6 +3,7 @@ using NewsPortal.Application.Common.Interfaces;
 using NewsPortal.Application.DTOs.Comments;
 using NewsPortal.Application.Interfaces;
 using NewsPortal.Application.Repositories;
+using NewsPortal.Application.Service.Notifications;
 using NewsPortal.Domain.Entities;
 
 namespace NewsPortal.Application.Service.Comments;
@@ -12,15 +13,17 @@ public sealed class CommentService : ICommentService
     private readonly ICommentRepository _commentRepository;
     private readonly INewsRepository _newsRepository;
     private readonly IUnitOfWork _unitOfWork;
-
+    private readonly INotificationService _notificationService;
     public CommentService(
         ICommentRepository commentRepository,
         INewsRepository newsRepository,
-        IUnitOfWork unitOfWork)
+        IUnitOfWork unitOfWork,
+        INotificationService notificationService)
     {
         _commentRepository = commentRepository;
         _newsRepository = newsRepository;
         _unitOfWork = unitOfWork;
+        _notificationService = notificationService;
     }
 
     public async Task<ApiResponse<IReadOnlyList<CommentDto>>> GetByNewsIdAsync(
@@ -77,6 +80,15 @@ public sealed class CommentService : ICommentService
 
         await _unitOfWork.CommitAsync();
 
+        if (news.WriterId != userId)
+        {
+            await _notificationService.CreateAsync(
+                news.WriterId,
+                "نظر جدید برای خبر شما",
+                $"یک نظر جدید برای خبر «{news.Title}» ثبت شد.",
+                $"/news/{news.Slug}");
+        }
+
         var createdComment =
             await _commentRepository.GetByIdWithUserAsync(
                 comment.Id);
@@ -124,6 +136,12 @@ public sealed class CommentService : ICommentService
 
         await _unitOfWork.CommitAsync();
 
+        await _notificationService.CreateAsync(
+    comment.UserId,
+    "نظر شما تأیید شد",
+    $"نظر شما برای خبر «{comment.News.Title}» تأیید شد.",
+    $"/news/{comment.News.Slug}");
+
         return ApiResponse<bool>.Success(
             true,
             "نظر با موفقیت تأیید شد");
@@ -145,6 +163,16 @@ public sealed class CommentService : ICommentService
         comment.Reject();
 
         await _unitOfWork.CommitAsync();
+
+        await _notificationService.CreateAsync(
+    comment.UserId,
+    "نظر شما رد شد",
+    $"نظر شما برای خبر «{comment.News.Title}» رد شد.",
+    $"/news/{comment.News.Slug}");
+
+        return ApiResponse<bool>.Success(
+            true,
+            "نظر با موفقیت رد شد");
 
         return ApiResponse<bool>.Success(
             true,

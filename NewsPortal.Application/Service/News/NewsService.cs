@@ -4,6 +4,7 @@ using NewsPortal.Application.DTOs.News;
 using NewsPortal.Application.DTOs.Tags;
 using NewsPortal.Application.Interfaces;
 using NewsPortal.Application.Repositories;
+using NewsPortal.Domain.Constants;
 using NewsPortal.Domain.Entities;
 using NewsPortal.Domain.Enums;
 using NewsEntity = NewsPortal.Domain.Entities.News;
@@ -21,17 +22,21 @@ public sealed class NewsService : INewsService
     private readonly IImageValidator _imageValidator;
     private readonly ISlugService _slugService;
     private readonly INewsImageRepository _newsImageRepository;
+    private readonly INotificationService _notificationService;
+    private readonly IUserRepository _userRepository;
 
-public NewsService(
-    INewsRepository newsRepository,
-    ICategoryRepository categoryRepository,
-    ICityRepository cityRepository,
-    ITagRepository tagRepository,
-    IUnitOfWork unitOfWork,
-    IFileService fileService,
-    IImageValidator imageValidator,
-    ISlugService slugService,
-    INewsImageRepository newsImageRepository)
+    public NewsService(
+        INewsRepository newsRepository,
+        ICategoryRepository categoryRepository,
+        ICityRepository cityRepository,
+        ITagRepository tagRepository,
+        IUnitOfWork unitOfWork,
+        IFileService fileService,
+        IImageValidator imageValidator,
+        ISlugService slugService,
+        INewsImageRepository newsImageRepository,
+        INotificationService notificationService,
+        IUserRepository userRepository)
     {
         _newsRepository = newsRepository;
         _categoryRepository = categoryRepository;
@@ -42,6 +47,8 @@ public NewsService(
         _imageValidator = imageValidator;
         _slugService = slugService;
         _newsImageRepository = newsImageRepository;
+        _notificationService = notificationService;
+        _userRepository = userRepository;
     }
 
     public async Task<ApiResponse<NewsDto>> GetByIdAsync(
@@ -107,7 +114,7 @@ public NewsService(
     }
 
     public async Task<ApiResponse<bool>> IncrementViewCountAsync(
-    int newsId)
+        int newsId)
     {
         var news =
             await _newsRepository.GetByIdAsync(newsId);
@@ -126,8 +133,8 @@ public NewsService(
     }
 
     public async Task<ApiResponse<List<NewsDto>>> GetRelatedAsync(
-    int newsId,
-    int count)
+        int newsId,
+        int count)
     {
         var news =
             await _newsRepository.GetByIdAsync(newsId);
@@ -159,7 +166,7 @@ public NewsService(
     }
 
     public async Task<ApiResponse<List<NewsDto>>> GetPopularAsync(
-    int count)
+        int count)
     {
         count = count < 1
             ? 5
@@ -179,7 +186,7 @@ public NewsService(
     }
 
     public async Task<ApiResponse<List<NewsDto>>> GetFeaturedAsync(
-    int count)
+        int count)
     {
         count = count < 1
             ? 5
@@ -198,10 +205,9 @@ public NewsService(
             result);
     }
 
-
     public async Task<ApiResponse<bool>> SetFeaturedAsync(
-     int newsId,
-     bool isFeatured)
+        int newsId,
+        bool isFeatured)
     {
         var news =
             await _newsRepository.GetByIdAsync(
@@ -223,7 +229,6 @@ public NewsService(
 
         return ApiResponse<bool>.Success(true);
     }
-    
 
     public async Task<ApiResponse<PagedResult<NewsDto>>> GetPagedAsync(
         int pageNumber,
@@ -298,7 +303,6 @@ public NewsService(
             }
         }
 
-        // دریافت و اعتبارسنجی Tag ها
         var tagIds =
             dto.TagIds
                 .Distinct()
@@ -314,9 +318,11 @@ public NewsService(
                 "یکی از تگ‌های انتخاب شده پیدا نشد");
         }
 
-        var slug = await GenerateUniqueSlugAsync(dto.Title);
+        var slug =
+            await GenerateUniqueSlugAsync(dto.Title);
 
-        var savedImages = new List<NewsImage>();
+        var savedImages =
+            new List<NewsImage>();
 
         for (int i = 0; i < dto.ImageFiles.Count; i++)
         {
@@ -358,7 +364,6 @@ public NewsService(
                 : NewsStatus.PendingReview
         };
 
-        // اتصال Tag ها به News
         foreach (var tag in tags)
         {
             news.NewsTags.Add(
@@ -377,16 +382,38 @@ public NewsService(
 
         await _unitOfWork.CommitAsync();
 
+        // User-created news -> notify admins
+        if (!isAdmin)
+        {
+            var adminUsers =
+                await _userRepository.GetAllAsync();
+
+            var adminIds =
+                adminUsers
+                    .Where(u =>
+                        u.Role?.Name == RoleNames.Admin)
+                    .Select(u => u.Id)
+                    .ToList();
+
+            if (adminIds.Count > 0)
+            {
+                await _notificationService.CreateManyAsync(
+                    adminIds,
+                    "خبر جدید برای بررسی",
+                    $"خبر «{news.Title}» برای بررسی ارسال شد.",
+                    $"/admin/news/edit/{news.Id}");
+            }
+        }
+
         return ApiResponse<NewsDto>.Success(
             MapToDto(news));
     }
 
- 
-public async Task<ApiResponse<NewsDto>> UpdateAsync(
-    int id,
-    UpdateNewsDto dto,
-    int userId,
-    bool isAdmin)
+    public async Task<ApiResponse<NewsDto>> UpdateAsync(
+        int id,
+        UpdateNewsDto dto,
+        int userId,
+        bool isAdmin)
     {
         var news =
             await _newsRepository.GetByIdAsync(id);
@@ -445,7 +472,8 @@ public async Task<ApiResponse<NewsDto>> UpdateAsync(
                 "یکی از تگ‌های انتخاب شده پیدا نشد");
         }
 
-        var newImages = new List<NewsImage>();
+        var newImages =
+            new List<NewsImage>();
 
         if (dto.ImageFiles.Count > 0)
         {
@@ -480,6 +508,9 @@ public async Task<ApiResponse<NewsDto>> UpdateAsync(
             news.NewsImages
                 .Select(image => image.ImagePath)
                 .ToList();
+
+        var previousStatus =
+            news.Status;
 
         news.Update(
             dto.Title,
@@ -533,13 +564,38 @@ public async Task<ApiResponse<NewsDto>> UpdateAsync(
             }
         }
 
+        // User re-submitted news for review
+        if (!isAdmin &&
+            previousStatus != NewsStatus.PendingReview)
+        {
+            var adminUsers =
+                await _userRepository.GetAllAsync();
+
+            var adminIds =
+                adminUsers
+                    .Where(u =>
+                        u.Role?.Name == RoleNames.Admin)
+                    .Select(u => u.Id)
+                    .ToList();
+
+            if (adminIds.Count > 0)
+            {
+                await _notificationService.CreateManyAsync(
+                    adminIds,
+                    "خبر ویرایش‌شده برای بررسی",
+                    $"خبر «{news.Title}» پس از ویرایش دوباره برای بررسی ارسال شد.",
+                    $"/admin/news/edit/{news.Id}");
+            }
+        }
+
         return ApiResponse<NewsDto>.Success(
             MapToDto(news));
     }
-public async Task<ApiResponse<bool>> DeleteAsync(
-    int id,
-    int userId,
-    bool isAdmin)
+
+    public async Task<ApiResponse<bool>> DeleteAsync(
+        int id,
+        int userId,
+        bool isAdmin)
     {
         var news =
             await _newsRepository.GetByIdAsync(id);
@@ -581,8 +637,6 @@ public async Task<ApiResponse<bool>> DeleteAsync(
             "خبر با موفقیت حذف شد");
     }
 
-
-
     public async Task<ApiResponse<NewsDto>> ChangeStatusAsync(
         int id,
         ChangeNewsStatusDto dto)
@@ -597,10 +651,37 @@ public async Task<ApiResponse<bool>> DeleteAsync(
                 "خبر پیدا نشد");
         }
 
+        var previousStatus =
+            news.Status;
+
         news.ChangeStatus(
             dto.Status);
 
         await _unitOfWork.CommitAsync();
+
+        // Notify writer only when the status actually changes
+        // to Published or Rejected.
+        if (previousStatus != dto.Status &&
+            (dto.Status == NewsStatus.Published ||
+             dto.Status == NewsStatus.Rejected))
+        {
+            if (dto.Status == NewsStatus.Published)
+            {
+                await _notificationService.CreateAsync(
+                    news.WriterId,
+                    "خبر شما منتشر شد",
+                    $"خبر «{news.Title}» با موفقیت منتشر شد.",
+                    $"/news/{news.Slug}");
+            }
+            else if (dto.Status == NewsStatus.Rejected)
+            {
+                await _notificationService.CreateAsync(
+                    news.WriterId,
+                    "خبر شما رد شد",
+                    $"خبر «{news.Title}» توسط مدیر رد شد.",
+                    $"/news/{news.Slug}");
+            }
+        }
 
         return ApiResponse<NewsDto>.Success(
             MapToDto(news),
@@ -608,10 +689,11 @@ public async Task<ApiResponse<bool>> DeleteAsync(
     }
 
     private async Task<string> GenerateUniqueSlugAsync(
-    string value,
-    int? excludeId = null)
+        string value,
+        int? excludeId = null)
     {
-        var slug = _slugService.Generate(value);
+        var slug =
+            _slugService.Generate(value);
 
         if (string.IsNullOrWhiteSpace(slug))
         {
@@ -621,9 +703,13 @@ public async Task<ApiResponse<bool>> DeleteAsync(
         var original = slug;
         var counter = 1;
 
-        while (await _newsRepository.ExistsBySlugAsync(slug, excludeId))
+        while (await _newsRepository.ExistsBySlugAsync(
+            slug,
+            excludeId))
         {
-            slug = $"{original}-{counter}";
+            slug =
+                $"{original}-{counter}";
+
             counter++;
         }
 
@@ -674,6 +760,4 @@ public async Task<ApiResponse<bool>> DeleteAsync(
                 .ToList(),
         };
     }
-
-
 }

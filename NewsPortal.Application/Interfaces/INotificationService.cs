@@ -17,4 +17,16 @@ public interface INotificationService
 
     Task<ApiResponse<bool>> MarkAllAsReadAsync(
         int userId);
+
+    Task CreateAsync(
+        int userId,
+        string title,
+        string message,
+        string? linkUrl = null);
+
+    Task CreateManyAsync(
+        IEnumerable<int> userIds,
+        string title,
+        string message,
+        string? linkUrl = null);
 }

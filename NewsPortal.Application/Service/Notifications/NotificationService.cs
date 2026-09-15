@@ -3,6 +3,7 @@ using NewsPortal.Application.Common.Interfaces;
 using NewsPortal.Application.DTOs.Notifications;
 using NewsPortal.Application.Interfaces;
 using NewsPortal.Application.Repositories;
+using NewsPortal.Domain.Entities;
 
 namespace NewsPortal.Application.Service.Notifications;
 
@@ -98,5 +99,55 @@ public sealed class NotificationService : INotificationService
         return ApiResponse<bool>.Success(
             true,
             "همه اعلان‌ها به عنوان خوانده شده علامت‌گذاری شدند.");
+    }
+
+    public async Task CreateAsync(
+        int userId,
+        string title,
+        string message,
+        string? linkUrl = null)
+    {
+        var notification =
+            new Notification(
+                userId,
+                title,
+                message,
+                linkUrl);
+
+        await _notificationRepository.AddAsync(
+            notification);
+
+        await _unitOfWork.CommitAsync();
+    }
+
+    public async Task CreateManyAsync(
+        IEnumerable<int> userIds,
+        string title,
+        string message,
+        string? linkUrl = null)
+    {
+        var notifications =
+            userIds
+                .Distinct()
+                .Select(userId =>
+                    new Notification(
+                        userId,
+                        title,
+                        message,
+                        linkUrl))
+                .ToList();
+
+        if (notifications.Count == 0)
+        {
+            return;
+        }
+
+        foreach (var notification in notifications)
+        {
+            await _notificationRepository.AddAsync(
+                notification);
+        }
+
+        await _unitOfWork.CommitAsync();
     }
 }
