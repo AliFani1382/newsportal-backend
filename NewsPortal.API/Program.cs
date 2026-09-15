@@ -249,6 +249,8 @@ builder.Services.AddCors(options =>
             {
                 "http://localhost:5173",
                 "https://localhost:5173",
+                "http://localhost:5174",
+                "https://localhost:5174",
                 "http://localhost:3000",
                 "https://localhost:3000"
             };
@@ -257,7 +259,7 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
-});
+});    
 
 var app = builder.Build();
 
@@ -289,11 +291,12 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseStaticFiles();
-
 app.UseCors("FrontendPolicy");
 
+app.UseStaticFiles();
+
 app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.UseRateLimiter();
