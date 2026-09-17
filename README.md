@@ -24,6 +24,7 @@ NewsPortal provides the backend services required for a modern news platform, in
 * Logging and API security features
 
 The API is consumed by a React frontend and exposes its endpoints through RESTful APIs.
+
 ## 🛠️ Tech Stack
 
 ### Backend
@@ -62,8 +63,8 @@ The API is consumed by a React frontend and exposes its endpoints through RESTfu
 * CORS
 * Security Headers
 * Git & GitHub
-* 
-* ## 🏗️ Architecture
+
+## 🏗️ Architecture
 
 The backend follows a layered architecture that separates API responsibilities, application logic, domain models, and infrastructure concerns.
 
@@ -102,6 +103,7 @@ NewsPortal
 * **Infrastructure:** Database access, Entity Framework Core, repositories, external services, and infrastructure implementations.
 
 This separation helps keep the codebase maintainable, testable, and easier to extend.
+
 ## 🔐 Authentication & Authorization
 
 The API uses JWT-based authentication and role-based authorization to secure protected endpoints.
@@ -124,6 +126,7 @@ The API uses JWT-based authentication and role-based authorization to secure pro
 * Authorization using ASP.NET Core `[Authorize]`
 
 Authentication and authorization are integrated into the ASP.NET Core request pipeline to protect application resources and enforce access rules.
+
 ## 📰 News Workflow & Publication
 
 NewsPortal implements a publication workflow that allows users to submit news while giving administrators control over the publishing process.
@@ -151,6 +154,7 @@ Administrators can:
 * Manage users and other protected resources
 
 This workflow separates content submission from publication and provides basic moderation and authorization for the news platform.
+
 ## 🗄️ Database & Entity Framework Core
 
 NewsPortal uses **SQL Server** as its relational database and **Entity Framework Core** for data access and database management.
@@ -187,6 +191,7 @@ The database manages data related to:
 * Notifications
 * Newsletter subscriptions
 * Email verification and password reset workflows
+
 ## 📡 API Documentation & Swagger
 
 The backend provides RESTful API endpoints for the NewsPortal frontend and other API clients.
@@ -211,6 +216,7 @@ The API includes endpoints for:
 Swagger provides documentation for available endpoints, request models, response models, and authentication requirements.
 
 The API follows a consistent response structure to make communication between the backend and frontend predictable.
+
 ## 🛡️ Error Handling, Validation & Logging
 
 The backend includes centralized mechanisms for validation, error handling, and application logging.
@@ -236,6 +242,7 @@ The backend includes centralized mechanisms for validation, error handling, and 
 * Centralized logging configuration
 
 These mechanisms improve API reliability, maintainability, and troubleshooting during development and production use.
+
 ## 🔒 Security & API Protection
 
 The API includes several security mechanisms to protect endpoints and control access to application resources.
@@ -256,6 +263,7 @@ The API includes several security mechanisms to protect endpoints and control ac
 * Validation of incoming API requests
 
 These security measures are integrated into the ASP.NET Core application pipeline and help provide a safer and more controlled API environment.
+
 ## ⚙️ Configuration & Running the Project
 
 ### Prerequisites
@@ -303,6 +311,7 @@ dotnet build
 Then run the API using Visual Studio or the .NET CLI.
 
 Once the API is running, Swagger can be used to explore and test the available endpoints.
+
 ## 📂 Project Structure & Key Components
 
 The backend is organized into separate projects based on responsibility:
@@ -345,9 +354,10 @@ Contains infrastructure and data access implementations, including:
 * Data persistence
 
 This structure keeps responsibilities separated and makes the project easier to understand and maintain.
+
 ## 📌 Key Features
 
-The backend provides the core functionality required for a modern news platform, including:
+The backend provides the core functionality required by a modern news platform, including:
 
 * JWT authentication and role-based authorization
 * User and Admin management
@@ -367,6 +377,7 @@ The backend provides the core functionality required for a modern news platform,
 * Structured logging with Serilog
 * Rate limiting and security headers
 * Swagger / OpenAPI documentation
+
 ## 📊 Project Status
 
 The backend development is currently complete and provides the main API functionality required by the NewsPortal application.
@@ -382,13 +393,3 @@ The project has been developed as a practical full-stack project with a focus on
 * RESTful API design
 
 The backend is designed to work with the NewsPortal React frontend through RESTful APIs.
-
-
-
-
-
-
-
-
-
-
