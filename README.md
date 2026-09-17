@@ -62,6 +62,7 @@ The API is consumed by a React frontend and exposes its endpoints through RESTfu
 * CORS
 * Security Headers
 * Git & GitHub
+* 
 * ## 🏗️ Architecture
 
 The backend follows a layered architecture that separates API responsibilities, application logic, domain models, and infrastructure concerns.
