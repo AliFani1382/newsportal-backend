@@ -19,6 +19,7 @@ public sealed class AuthService : IAuthService
     private readonly IUnitOfWork _unitOfWork;
     private readonly IRoleRepository _roleRepository;
     private readonly IEmailVerificationTokenRepository _emailVerificationTokenRepository;
+    private readonly IEmailService _emailService;
 
     public AuthService(
         IUserRepository userRepository,
@@ -26,7 +27,8 @@ public sealed class AuthService : IAuthService
         IJwtTokenService tokenService,
         IUnitOfWork unitOfWork,
         IRoleRepository roleRepository,
-        IEmailVerificationTokenRepository emailVerificationTokenRepository)
+        IEmailVerificationTokenRepository emailVerificationTokenRepository,
+         IEmailService emailService)
     {
         _userRepository = userRepository;
         _passwordHasher = passwordHasher;
@@ -34,12 +36,12 @@ public sealed class AuthService : IAuthService
         _unitOfWork = unitOfWork;
         _roleRepository = roleRepository;
         _emailVerificationTokenRepository = emailVerificationTokenRepository;
+        _emailService = emailService;
     }
 
     public async Task<ApiResponse<AuthResponseDto>> RegisterAsync(
-        RegisterDto dto)
+      RegisterDto dto)
     {
-
         var usernameExists =
             await _userRepository.ExistsByUsernameAsync(dto.Username);
 
@@ -49,7 +51,7 @@ public sealed class AuthService : IAuthService
                 ApiErrorCode.Conflict,
                 "نام کاربری قبلاً استفاده شده است.");
         }
-       
+
         var emailExists =
             await _userRepository.ExistsByEmailAsync(dto.Email);
 
@@ -59,10 +61,9 @@ public sealed class AuthService : IAuthService
                 ApiErrorCode.Conflict,
                 "ایمیل قبلاً استفاده شده است.");
         }
-      
 
-        var role = await _roleRepository.GetNameAsync(
-            RoleNames.User);
+        var role =
+            await _roleRepository.GetNameAsync(RoleNames.User);
 
         if (role is null)
         {
@@ -74,49 +75,54 @@ public sealed class AuthService : IAuthService
         var passwordHash =
             _passwordHasher.Hash(dto.Password);
 
-        var user = new UserEntity(
-            dto.Username,
-            dto.Email,
-            passwordHash,
-            dto.FullName,
-            role.Id);
-      
+        var user =
+            new UserEntity(
+                dto.Username,
+                dto.Email,
+                passwordHash,
+                dto.FullName,
+                role.Id);
 
         await _userRepository.AddAsync(user);
 
-        // ابتدا کاربر را ذخیره می‌کنیم تا UserId تولید شود.
         await _unitOfWork.CommitAsync();
 
-      
+        var verificationToken =
+            Convert.ToBase64String(
+                RandomNumberGenerator.GetBytes(32));
 
-        var verificationToken = Convert.ToBase64String(
-            RandomNumberGenerator.GetBytes(32));
+        var expiresAt =
+            DateTime.UtcNow.AddHours(24);
 
-        var expiresAt = DateTime.UtcNow.AddHours(24);
-
-        var emailVerificationToken = new EmailVerificationToken(
-            user.Id,
-            verificationToken,
-            expiresAt);
+        var emailVerificationToken =
+            new EmailVerificationToken(
+                user.Id,
+                verificationToken,
+                expiresAt);
 
         await _emailVerificationTokenRepository.AddAsync(
             emailVerificationToken);
 
         await _unitOfWork.CommitAsync();
 
-        var token = _tokenService.GenerateToken(user);
+        await _emailService.SendEmailVerificationEmailAsync(
+            user.Email,
+            verificationToken);
 
-        var response = new AuthResponseDto
-        {
-            UserId = user.Id,
-            Username = user.Username,
-            Token = token,
-            IsEmailVerified = user.IsEmailVerified
-        };
+        var token =
+            _tokenService.GenerateToken(user);
+
+        var response =
+            new AuthResponseDto
+            {
+                UserId = user.Id,
+                Username = user.Username,
+                Token = token,
+                IsEmailVerified = user.IsEmailVerified
+            };
 
         return ApiResponse<AuthResponseDto>.Success(response);
     }
-
     public async Task<ApiResponse<AuthResponseDto>> LoginAsync(
         LoginDto dto)
     {

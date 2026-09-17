@@ -136,6 +136,7 @@ builder.Services.AddScoped<
     INewsletterService,
     NewsletterService>();
 builder.Services.AddScoped<ITagService, TagService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 
 // JWT Authentication Configurations

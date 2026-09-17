@@ -1,10 +1,9 @@
-﻿using NewsPortal.Application.Common;
+﻿using System.Security.Cryptography;
+using NewsPortal.Application.Common;
 using NewsPortal.Application.Common.Interfaces;
 using NewsPortal.Application.DTOs.EmailVerification;
 using NewsPortal.Application.Interfaces;
 using NewsPortal.Application.Repositories;
-using NewsPortal.Domain.Entities;
-using System.Security.Cryptography;
 
 namespace NewsPortal.Application.Service.EmailVerification;
 
@@ -13,19 +12,22 @@ public sealed class EmailVerificationService : IEmailVerificationService
     private readonly IUserRepository _userRepository;
     private readonly IEmailVerificationTokenRepository _tokenRepository;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IEmailService _emailService;
 
     public EmailVerificationService(
         IUserRepository userRepository,
         IEmailVerificationTokenRepository tokenRepository,
-        IUnitOfWork unitOfWork)
+        IUnitOfWork unitOfWork,
+        IEmailService emailService)
     {
         _userRepository = userRepository;
         _tokenRepository = tokenRepository;
         _unitOfWork = unitOfWork;
+        _emailService = emailService;
     }
 
     public async Task<ApiResponse<VerifyEmailResponseDto>> VerifyEmailAsync(
-       VerifyEmailDto dto)
+        VerifyEmailDto dto)
     {
         var verificationToken =
             await _tokenRepository.GetValidTokenAsync(dto.Token);
@@ -37,8 +39,9 @@ public sealed class EmailVerificationService : IEmailVerificationService
                 "توکن تأیید ایمیل نامعتبر یا منقضی شده است.");
         }
 
-        var user = await _userRepository.GetByIdAsync(
-            verificationToken.UserId);
+        var user =
+            await _userRepository.GetByIdAsync(
+                verificationToken.UserId);
 
         if (user is null)
         {
@@ -48,6 +51,7 @@ public sealed class EmailVerificationService : IEmailVerificationService
         }
 
         user.VerifyEmail();
+
         verificationToken.MarkAsUsed();
 
         await _unitOfWork.CommitAsync();
@@ -59,11 +63,12 @@ public sealed class EmailVerificationService : IEmailVerificationService
             },
             "ایمیل با موفقیت تأیید شد.");
     }
-    
+
     public async Task<ApiResponse<bool>> ResendVerificationAsync(
-    ResendVerificationDto dto)
+        ResendVerificationDto dto)
     {
-        var user = await _userRepository.GetByEmailAsync(dto.Email);
+        var user =
+            await _userRepository.GetByEmailAsync(dto.Email);
 
         if (user is null || user.IsEmailVerified)
         {
@@ -80,19 +85,26 @@ public sealed class EmailVerificationService : IEmailVerificationService
             token.MarkAsUsed();
         }
 
-        var verificationToken = Convert.ToBase64String(
-            RandomNumberGenerator.GetBytes(32));
+        var verificationToken =
+            Convert.ToBase64String(
+                RandomNumberGenerator.GetBytes(32));
 
-        var expiresAt = DateTime.UtcNow.AddHours(24);
+        var expiresAt =
+            DateTime.UtcNow.AddHours(24);
 
-        var newToken = new EmailVerificationToken(
-            user.Id,
-            verificationToken,
-            expiresAt);
+        var newToken =
+            new Domain.Entities.EmailVerificationToken(
+                user.Id,
+                verificationToken,
+                expiresAt);
 
         await _tokenRepository.AddAsync(newToken);
 
         await _unitOfWork.CommitAsync();
+
+        await _emailService.SendEmailVerificationEmailAsync(
+            user.Email,
+            verificationToken);
 
         return ApiResponse<bool>.Success(
             true,
