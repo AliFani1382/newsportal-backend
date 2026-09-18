@@ -105,6 +105,7 @@ builder.Services.AddScoped<
     NewsletterSubscriberRepository>();
 builder.Services.AddScoped<ITagRepository, TagRepository>();
 builder.Services.AddScoped<INewsImageRepository, NewsImageRepository>();
+builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 // Dependency Injection: Services
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
@@ -188,6 +189,33 @@ builder.Services.AddRateLimiter(options =>
                 Window = TimeSpan.FromMinutes(1),
                 QueueLimit = 0
             }));
+    options.AddPolicy("RegisterRateLimit", httpContext =>
+       RateLimitPartition.GetFixedWindowLimiter(
+           partitionKey: httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+           factory: _ => new FixedWindowRateLimiterOptions
+           {
+               PermitLimit = 5,
+               Window = TimeSpan.FromMinutes(15),
+               QueueLimit = 0
+           }));
+    options.AddPolicy("ForgotPasswordRateLimit", httpContext =>
+    RateLimitPartition.GetFixedWindowLimiter(
+        partitionKey: httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+        factory: _ => new FixedWindowRateLimiterOptions
+        {
+            PermitLimit = 3,
+            Window = TimeSpan.FromMinutes(15),
+            QueueLimit = 0
+        }));
+    options.AddPolicy("ResendVerificationRateLimit", httpContext =>
+    RateLimitPartition.GetFixedWindowLimiter(
+        partitionKey: httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+        factory: _ => new FixedWindowRateLimiterOptions
+        {
+            PermitLimit = 3,
+            Window = TimeSpan.FromMinutes(15),
+            QueueLimit = 0
+        }));
 });
 
 // Swagger API Documentation with Bearer security

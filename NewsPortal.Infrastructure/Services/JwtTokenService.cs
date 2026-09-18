@@ -36,9 +36,9 @@ namespace NewsPortal.Infrastructure.Services
                  ?? throw new InvalidOperationException(
                    "JWT Audience is not configured.");
 
-            var expiryInDays = jwtSettings.GetValue<int?>("ExpiryInDays")
+            var expiryInMinutes = jwtSettings.GetValue<int?>("AccessTokenExpiryInMinutes")
                 ?? throw new InvalidOperationException(
-                    "JWT ExpiryInDays is not configured.");
+                    "JWT AccessTokenExpiryInMinutes is not configured.");
 
             var claims = new List<Claim>
             {
@@ -77,7 +77,7 @@ namespace NewsPortal.Infrastructure.Services
                 issuer: issuer,
                 audience: audience,
                 claims: claims,
-                expires: DateTime.UtcNow.AddDays(expiryInDays),
+                expires: DateTime.UtcNow.AddMinutes(expiryInMinutes),
                 signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler()

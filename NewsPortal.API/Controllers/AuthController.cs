@@ -19,6 +19,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("register")]
+    [EnableRateLimiting("RegisterRateLimit")]
     public async Task<IActionResult> Register([FromBody] RegisterDto dto)
     {
         var result = await _authService.RegisterAsync(dto);
@@ -51,6 +52,19 @@ public class AuthController : ControllerBase
             "ورود با موفقیت انجام شد.");
 
         return successResponse.ToHttpResult();
+    }
+    [HttpPost("refresh")]
+    public async Task<IActionResult> Refresh([FromBody] RefreshTokenRequestDto dto)
+    {
+        var result = await _authService.RefreshTokenAsync(dto);
+        return result.ToHttpResult();
+    }
+
+    [HttpPost("logout")]
+    public async Task<IActionResult> Logout([FromBody] RefreshTokenRequestDto dto)
+    {
+        var result = await _authService.LogoutAsync(dto);
+        return result.ToHttpResult();
     }
 }
 

@@ -22,7 +22,7 @@ namespace NewsPortal.Application.Validators.Auth
 
             RuleFor(x => x.Password)
                 .NotEmpty().WithMessage("رمز عبور الزامی است.")
-                .MinimumLength(6).WithMessage("رمز عبور باید حداقل 6 کاراکتر باشد.")
+                .MinimumLength(8).WithMessage("رمز عبور باید حداقل 8 کاراکتر باشد.")
                 .MaximumLength(100).WithMessage("رمز عبور نمی‌تواند بیشتر از 100 کاراکتر باشد.");
         }
     }

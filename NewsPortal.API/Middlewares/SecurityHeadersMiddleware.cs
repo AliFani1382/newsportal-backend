@@ -16,6 +16,15 @@ public class SecurityHeadersMiddleware
         context.Response.Headers["Referrer-Policy"] = "no-referrer";
         context.Response.Headers["Permissions-Policy"] =
             "camera=(), microphone=(), geolocation=()";
+        context.Response.Headers["Content-Security-Policy"] =
+            "default-src 'self'; " +
+            "img-src 'self' data:; " +
+            "script-src 'self' 'unsafe-inline'; " +
+            "style-src 'self' 'unsafe-inline'; " +
+            "connect-src 'self'; " +
+            "frame-ancestors 'none'; " +
+            "base-uri 'self'; " +
+            "form-action 'self';";
 
         await _next(context);
     }

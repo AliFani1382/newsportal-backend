@@ -19,6 +19,7 @@ namespace NewsPortal.Infrastructure.Persistence
         public DbSet<Comment> Comments => Set<Comment>();
         public DbSet<NewsReaction> NewsReactions => Set<NewsReaction>();
         public DbSet<Bookmark> Bookmarks => Set<Bookmark>();
+        public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
         public DbSet<PasswordResetToken> PasswordResetTokens
     => Set<PasswordResetToken>();
 

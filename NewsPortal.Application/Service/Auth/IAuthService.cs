@@ -12,6 +12,9 @@ namespace NewsPortal.Application.Service.Auth
 
         Task<ApiResponse<AuthResponseDto>> LoginAsync(
            LoginDto dto);
-       
+
+        Task<ApiResponse<AuthResponseDto>> RefreshTokenAsync(RefreshTokenRequestDto dto);
+        Task<ApiResponse<bool>> LogoutAsync(RefreshTokenRequestDto dto);
+
     }
 }

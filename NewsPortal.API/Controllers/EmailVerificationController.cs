@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using NewsPortal.API.Extensions;
 using NewsPortal.Application.DTOs.EmailVerification;
 using NewsPortal.Application.Interfaces;
@@ -29,6 +30,7 @@ public class EmailVerificationController : ControllerBase
         return response.ToHttpResult();
     }
     [HttpPost("resend-verification")]
+    [EnableRateLimiting("ResendVerificationRateLimit")]
     public async Task<IActionResult> ResendVerification(
     [FromBody] ResendVerificationDto dto)
     {
