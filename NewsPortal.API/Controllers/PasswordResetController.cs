@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using NewsPortal.API.Extensions;
 using NewsPortal.Application.DTOs.PasswordReset;
 using NewsPortal.Application.Interfaces;
@@ -20,6 +21,8 @@ public class PasswordResetController : ControllerBase
     }
 
     [HttpPost("forgot-password")]
+    [EnableRateLimiting("ForgotPasswordRateLimit")]
+
     public async Task<IActionResult> ForgotPassword(
         [FromBody] ForgotPasswordDto dto)
     {
