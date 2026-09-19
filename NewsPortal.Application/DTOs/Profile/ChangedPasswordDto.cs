@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,9 +13,6 @@ namespace NewsPortal.Application.DTOs.Profile
         public required string NewPassword { get; set; }
 
         public required string ConfirmPassword { get; set; }
-
-
-
 
     }
 }

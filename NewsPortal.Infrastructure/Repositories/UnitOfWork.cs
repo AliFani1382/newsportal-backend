@@ -1,4 +1,4 @@
-﻿using NewsPortal.Application.Common.Interfaces;
+using NewsPortal.Application.Common.Interfaces;
 using NewsPortal.Application.Repositories;
 using NewsPortal.Domain.Entities;
 using NewsPortal.Infrastructure.Persistence;
@@ -35,5 +35,4 @@ namespace NewsPortal.Infrastructure.Repositories
             => _context.Dispose();
     }
 }
-
 

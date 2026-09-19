@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace NewsPortal.Application.Common;
 
@@ -44,7 +44,6 @@ public class ApiResponse<T>
     }
 }
 
-// کلاس غیرجنریک برای عملکردهایی که خروجی Data ندارند
 public class ApiResponse : ApiResponse<object>
 {
     public static ApiResponse Success(string message = "عملیات با موفقیت انجام شد.")

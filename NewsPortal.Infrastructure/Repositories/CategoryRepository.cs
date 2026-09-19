@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using NewsPortal.Application.Repositories;
 using NewsPortal.Domain.Entities;
 using NewsPortal.Infrastructure.Persistence;
@@ -15,7 +15,6 @@ namespace NewsPortal.Infrastructure.Repositories
         {
         }
 
-
         public async Task<bool> ExistsBySlugAsync(
             string slug,
             int? excludeId = null)
@@ -26,7 +25,6 @@ namespace NewsPortal.Infrastructure.Repositories
                 (!excludeId.HasValue ||
                  x.Id != excludeId.Value));
         }
-
 
         public async Task<Category?> GetBySlugAsync(
             string slug)

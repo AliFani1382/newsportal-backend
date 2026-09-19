@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NewsPortal.Domain.Entities;
 using System;
@@ -36,7 +36,6 @@ namespace NewsPortal.Infrastructure.Persistence.Configurations
 
             builder.HasIndex(X => X.Username)
                 .IsUnique();
-
 
             builder.HasIndex(X => X.Email)
                 .IsUnique();

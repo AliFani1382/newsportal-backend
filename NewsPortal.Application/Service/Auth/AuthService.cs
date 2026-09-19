@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 using NewsPortal.Application.Common;
 using NewsPortal.Application.Common.Interfaces;
 using NewsPortal.Application.DTOs.Auth;
@@ -222,7 +222,6 @@ public sealed class AuthService : IAuthService
                 "نشست شما منقضی شده است. لطفاً دوباره وارد شوید.");
         }
 
-        // rotation: توکن قبلی باطل و یکی جدید صادر می‌شود
         storedToken.Revoke();
 
         var newAccessToken = _tokenService.GenerateToken(user);

@@ -1,11 +1,10 @@
-﻿using NewsPortal.Application.Common;
+using NewsPortal.Application.Common;
 using NewsPortal.Application.Common.Interfaces;
 using NewsPortal.Application.DTOs.Profile;
 using NewsPortal.Application.DTOs.User;
 using NewsPortal.Application.Interfaces;
 using NewsPortal.Application.Repositories;
 using UserEntity = NewsPortal.Domain.Entities.User;
-
 
 namespace NewsPortal.Application.Service.User
 {

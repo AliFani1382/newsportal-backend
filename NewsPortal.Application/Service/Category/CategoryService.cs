@@ -1,4 +1,4 @@
-﻿using NewsPortal.Application.Common;
+using NewsPortal.Application.Common;
 using NewsPortal.Application.Common.Helpers;
 using NewsPortal.Application.Common.Interfaces;
 using NewsPortal.Application.DTOs.Category;
@@ -7,13 +7,11 @@ using CategoryEntity = NewsPortal.Domain.Entities.Category;
 
 namespace NewsPortal.Application.Service.Category;
 
-
 public sealed class CategoryService : ICategoryService
 {
     private readonly ICategoryRepository _categoryRepository;
     private readonly INewsRepository _newsRepository;
     private readonly IUnitOfWork _unitOfWork;
-
 
     public CategoryService(
         ICategoryRepository categoryRepository,
@@ -25,33 +23,24 @@ public sealed class CategoryService : ICategoryService
         _unitOfWork = unitOfWork;
     }
 
-
-
     public async Task<ApiResponse<IReadOnlyList<CategoryDto>>> GetAllAsync()
     {
         var categories =
             await _categoryRepository.GetAllAsync();
-
 
         var result =
             categories
             .Select(MapToDto)
             .ToList();
 
-
         return ApiResponse<IReadOnlyList<CategoryDto>>
             .Success(result);
     }
-
-
-
-
 
     public async Task<ApiResponse<CategoryDto>> GetByIdAsync(int id)
     {
         var category =
             await _categoryRepository.GetByIdAsync(id);
-
 
         if (category is null)
         {
@@ -60,14 +49,9 @@ public sealed class CategoryService : ICategoryService
                 "دسته بندی پیدا نشد");
         }
 
-
         return ApiResponse<CategoryDto>
             .Success(MapToDto(category));
     }
-
-
-
-
 
     public async Task<ApiResponse<CategoryDto>> GetBySlugAsync(
         string slug)
@@ -75,7 +59,6 @@ public sealed class CategoryService : ICategoryService
         var category =
             await _categoryRepository.GetBySlugAsync(slug);
 
-
         if (category is null)
         {
             return ApiResponse<CategoryDto>.Failure(
@@ -83,14 +66,9 @@ public sealed class CategoryService : ICategoryService
                 "دسته بندی پیدا نشد");
         }
 
-
         return ApiResponse<CategoryDto>
             .Success(MapToDto(category));
     }
-
-
-
-
 
     public async Task<ApiResponse<CategoryDto>> CreateAsync(
         CreateCategoryDto dto)
@@ -102,29 +80,19 @@ public sealed class CategoryService : ICategoryService
                 ? dto.Name
                 : dto.Slug);
 
-
-
         var category = new CategoryEntity
         {
             Name = dto.Name,
             Slug = slug
         };
 
-
         await _categoryRepository.AddAsync(category);
 
-
         await _unitOfWork.CommitAsync();
-
-
 
         return ApiResponse<CategoryDto>
             .Success(MapToDto(category));
     }
-
-
-
-
 
     public async Task<ApiResponse<bool>> UpdateAsync(
         int id,
@@ -134,16 +102,12 @@ public sealed class CategoryService : ICategoryService
         var category =
             await _categoryRepository.GetByIdAsync(id);
 
-
-
         if (category is null)
         {
             return ApiResponse<bool>.Failure(
                 ApiErrorCode.NotFound,
                 "دسته بندی پیدا نشد");
         }
-
-
 
         var slug =
             await GenerateUniqueSlugAsync(
@@ -152,30 +116,18 @@ public sealed class CategoryService : ICategoryService
                 : dto.Slug,
                 id);
 
-
-
         category.Name = dto.Name;
         category.Slug = slug;
 
-
-
         _categoryRepository.Update(category);
 
-
         await _unitOfWork.CommitAsync();
-
-
 
         return ApiResponse<bool>
             .Success(
                 true,
                 "دسته بندی با موفقیت ویرایش شد");
     }
-
-
-
-
-
 
     public async Task<ApiResponse<bool>> DeleteAsync(
         int id)
@@ -184,8 +136,6 @@ public sealed class CategoryService : ICategoryService
         var category =
             await _categoryRepository.GetByIdAsync(id);
 
-
-
         if (category is null)
         {
             return ApiResponse<bool>.Failure(
@@ -193,14 +143,9 @@ public sealed class CategoryService : ICategoryService
                 "دسته بندی پیدا نشد");
         }
 
-
-
-
         var hasNews =
             await _newsRepository.AnyAsync(
                 x => x.CategoryId == id);
-
-
 
         if (hasNews)
         {
@@ -209,27 +154,15 @@ public sealed class CategoryService : ICategoryService
                 "این دسته بندی دارای خبر است و قابل حذف نیست");
         }
 
-
-
         _categoryRepository.Remove(category);
 
-
-
         await _unitOfWork.CommitAsync();
-
-
 
         return ApiResponse<bool>
             .Success(
                 true,
                 "دسته بندی حذف شد");
     }
-
-
-
-
-
-
 
     private async Task<string> GenerateUniqueSlugAsync(
         string value,
@@ -239,20 +172,14 @@ public sealed class CategoryService : ICategoryService
         var slug =
             SlugHelper.GenerateSlug(value);
 
-
-
         if (string.IsNullOrWhiteSpace(slug))
         {
             slug = "category";
         }
 
-
-
         var originalSlug = slug;
 
         var counter = 1;
-
-
 
         while (true)
         {
@@ -263,18 +190,13 @@ public sealed class CategoryService : ICategoryService
                     slug,
                     excludeId);
 
-
-
             if (!exists)
             {
                 return slug;
             }
 
-
-
             slug =
                 $"{originalSlug}-{counter}";
-
 
             counter++;
         }

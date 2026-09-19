@@ -1,4 +1,4 @@
-﻿using NewsPortal.Domain.Entities;
+using NewsPortal.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +11,12 @@ namespace NewsPortal.Application.Repositories
     public interface ICategoryRepository : IRepository<Category>
     {
 
-
         Task<Category?> GetBySlugAsync(
        string slug);
-
 
         Task<bool> ExistsBySlugAsync(
             string slug,
             int? excludeId = null);
-
-
 
     }
 }

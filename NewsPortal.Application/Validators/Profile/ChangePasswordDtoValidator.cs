@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+using FluentValidation;
 using NewsPortal.Application.DTOs.Profile;
 
 namespace NewsPortal.Application.Validators.Profile;
@@ -18,15 +18,11 @@ public sealed class ChangePasswordDtoValidator
             .MinimumLength(8)
              .WithMessage(".رمز عبور جدید باید حداقل 8 کاراکتر باشد");
 
-
-
         RuleFor(x => x.ConfirmPassword)
             .NotEmpty()
             .WithMessage(".تکرار رمز عبور الزامی است")
            .Equal(x => x.NewPassword)
              .WithMessage(".رمز عبور جدید و تکرار آن یکسان نیست");
-
-
 
     }
 }

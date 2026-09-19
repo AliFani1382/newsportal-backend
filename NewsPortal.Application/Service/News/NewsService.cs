@@ -1,4 +1,4 @@
-﻿using NewsPortal.Application.Common;
+using NewsPortal.Application.Common;
 using NewsPortal.Application.Common.Interfaces;
 using NewsPortal.Application.DTOs.News;
 using NewsPortal.Application.DTOs.Tags;
@@ -382,7 +382,6 @@ public sealed class NewsService : INewsService
 
         await _unitOfWork.CommitAsync();
 
-        // User-created news -> notify admins
         if (!isAdmin)
         {
             var adminUsers =
@@ -564,7 +563,6 @@ public sealed class NewsService : INewsService
             }
         }
 
-        // User re-submitted news for review
         if (!isAdmin &&
             previousStatus != NewsStatus.PendingReview)
         {
@@ -659,8 +657,6 @@ public sealed class NewsService : INewsService
 
         await _unitOfWork.CommitAsync();
 
-        // Notify writer only when the status actually changes
-        // to Published or Rejected.
         if (previousStatus != dto.Status &&
             (dto.Status == NewsStatus.Published ||
              dto.Status == NewsStatus.Rejected))

@@ -1,4 +1,4 @@
-﻿using NewsPortal.Application.Common;
+using NewsPortal.Application.Common;
 using NewsPortal.Application.DTOs.Category;
 using System;
 using System.Collections.Generic;
@@ -20,7 +20,6 @@ namespace NewsPortal.Application.Service.Category
         Task<ApiResponse<bool>> DeleteAsync(int id);
 
       
-
 
     }
 }

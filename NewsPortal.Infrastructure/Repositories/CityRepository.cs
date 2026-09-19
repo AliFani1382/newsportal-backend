@@ -1,12 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using NewsPortal.Application.Repositories;
 using NewsPortal.Domain.Entities;
 using NewsPortal.Infrastructure.Persistence;
 
 namespace NewsPortal.Infrastructure.Repositories
 {
-
-
 
     public class CityRepository : Repository<City>, ICityRepository
     {

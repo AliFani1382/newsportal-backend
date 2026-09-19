@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NewsPortal.Application.Common;
 using NewsPortal.Application.DTOs.City;
 using NewsPortal.API.Extensions; // فرض بر این است که ToHttpResult در این Namespace قرار دارد
 using NewsPortal.Domain.Constants;
 using NewsPortal.Application.Service.city;
-
 
 namespace NewsPortal.API.Controllers;
 

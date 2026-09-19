@@ -1,13 +1,11 @@
-﻿using NewsPortal.Application.Common;
+using NewsPortal.Application.Common;
 using NewsPortal.Application.Common.Helpers;
 using NewsPortal.Application.Common.Interfaces;
 using NewsPortal.Application.DTOs.City;
 using NewsPortal.Application.Repositories;
 using CityEntity = NewsPortal.Domain.Entities.City;
 
-
 namespace NewsPortal.Application.Service.city;
-
 
 public sealed class CityService : ICityService
 {
@@ -15,7 +13,6 @@ public sealed class CityService : ICityService
     private readonly ICityRepository _cityRepository;
     private readonly INewsRepository _newsRepository;
     private readonly IUnitOfWork _unitOfWork;
-
 
     public CityService(
     ICityRepository cityRepository,
@@ -32,12 +29,10 @@ public sealed class CityService : ICityService
         var cities =
             await _cityRepository.GetAllAsync();
 
-
         var result =
             cities
             .Select(MapToDto)
             .ToList();
-
 
         return ApiResponse<IReadOnlyList<CityDto>>
             .Success(result);
@@ -50,14 +45,12 @@ public sealed class CityService : ICityService
         var city =
             await _cityRepository.GetByIdAsync(id);
 
-
         if (city is null)
         {
             return ApiResponse<CityDto>.Failure(
                 ApiErrorCode.NotFound,
                 "شهر پیدا نشد");
         }
-
 
         return ApiResponse<CityDto>
             .Success(MapToDto(city));
@@ -70,14 +63,12 @@ public sealed class CityService : ICityService
         var city =
             await _cityRepository.GetBySlugAsync(slug);
 
-
         if (city is null)
         {
             return ApiResponse<CityDto>.Failure(
                 ApiErrorCode.NotFound,
                 "شهر پیدا نشد");
         }
-
 
         return ApiResponse<CityDto>
             .Success(MapToDto(city));
@@ -114,14 +105,12 @@ public sealed class CityService : ICityService
         var city =
             await _cityRepository.GetByIdAsync(id);
 
-
         if (city is null)
         {
             return ApiResponse<CityDto>.Failure(
                 ApiErrorCode.NotFound,
                 "شهر پیدا نشد");
         }
-
 
         var slug =
             await GenerateUniqueSlugAsync(
@@ -132,7 +121,6 @@ public sealed class CityService : ICityService
 
         city.Name = dto.Name;
         city.Slug = slug;
-
 
         _cityRepository.Update(city);
 
@@ -183,18 +171,14 @@ public sealed class CityService : ICityService
         var slug =
             SlugHelper.GenerateSlug(value);
 
-
-
         if (string.IsNullOrWhiteSpace(slug))
         {
             slug = "city";
         }
 
-
         var original = slug;
 
         var counter = 1;
-
 
         while (await _cityRepository
             .ExistsBySlugAsync(slug, excludeId))

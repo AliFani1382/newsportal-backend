@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
@@ -35,16 +35,13 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.RateLimiting;
 
-
 Console.OutputEncoding = Encoding.UTF8;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configure Serilog
 builder.Host.UseSerilog((context, configuration) =>
     configuration.ReadFrom.Configuration(context.Configuration));
 
-// Add controllers, configure JSON format, and prevent object cycle issues
 builder.Services
     .AddControllers()
     .AddJsonOptions(options =>
@@ -54,7 +51,6 @@ builder.Services
         options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
     });
 
-// Configure Custom Validation Response Format (Align with ApiResponse & ApiErrorCode)
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
     options.InvalidModelStateResponseFactory = context =>
@@ -73,11 +69,9 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
     };
 });
 
-// Database Connection
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("sqlconnection")));
 
-// Dependency Injection: Repositories
 builder.Services.AddScoped<INewsRepository, NewsRepository>();
 builder.Services.AddScoped<IImageValidator, ImageValidator>();
 builder.Services.AddScoped<ICityRepository, CityRepository>();
@@ -106,7 +100,6 @@ builder.Services.AddScoped<
 builder.Services.AddScoped<ITagRepository, TagRepository>();
 builder.Services.AddScoped<INewsImageRepository, NewsImageRepository>();
 builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
-// Dependency Injection: Services
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 
@@ -139,8 +132,6 @@ builder.Services.AddScoped<
 builder.Services.AddScoped<ITagService, TagService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 
-
-// JWT Authentication Configurations
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var secretKey = jwtSettings["Key"];
 
@@ -174,7 +165,6 @@ builder.Services
 
 builder.Services.AddAuthorization();
 
-// Rate Limiting (برای جلوگیری از Brute Force روی Login)
 builder.Services.AddRateLimiter(options =>
 {
     options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
@@ -218,7 +208,6 @@ builder.Services.AddRateLimiter(options =>
         }));
 });
 
-// Swagger API Documentation with Bearer security
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(options =>
@@ -255,15 +244,12 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-// FluentValidation
 builder.Services.AddValidatorsFromAssemblyContaining<CreateNewsDtoValidator>();
 builder.Services.AddFluentValidationAutoValidation();
 
-// Global Exception Handling
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
-// CORS Settings
 var allowedOrigins = builder.Configuration
     .GetSection("Cors:AllowedOrigins")
     .Get<string[]>() ?? Array.Empty<string>();
@@ -300,7 +286,6 @@ using (var scope = app.Services.CreateScope())
     await DatabaseSeeder.SeedAsync(context);
 }
 
-// HTTP Request Pipeline
 app.UseExceptionHandler();
 
 app.UseMiddleware<NewsPortal.API.Middlewares.SecurityHeadersMiddleware>();

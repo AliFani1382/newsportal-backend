@@ -1,4 +1,4 @@
-﻿using System.Linq.Expressions;
+using System.Linq.Expressions;
 
 namespace NewsPortal.Application.Repositories
 {
@@ -26,6 +26,4 @@ namespace NewsPortal.Application.Repositories
 
     }
 }
-
-
 

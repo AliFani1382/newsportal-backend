@@ -1,6 +1,5 @@
-﻿using NewsPortal.Application.Common;
+using NewsPortal.Application.Common;
 using NewsPortal.Application.DTOs.Auth;
-
 
 namespace NewsPortal.Application.Service.Auth
 {

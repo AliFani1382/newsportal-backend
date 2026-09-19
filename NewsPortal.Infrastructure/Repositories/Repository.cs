@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using NewsPortal.Application.Repositories;
 using NewsPortal.Infrastructure.Persistence;
 using System.Linq.Expressions;
@@ -15,8 +15,6 @@ namespace NewsPortal.Infrastructure.Repositories
             _context = context;
             dbSet = _context.Set<T>();
         }
-
-        // پیاده‌سازی اعضای اینترفیس IRepository<T>
 
         public virtual async Task<T?> GetByIdAsync(int id)
         {
@@ -44,11 +42,6 @@ namespace NewsPortal.Infrastructure.Repositories
         {
             dbSet.Update(entity);
         }
-
-        // متدهای کمکی اضافه (غیر از اینترفیس) برای فیلتر/مرتب‌سازی/Include پیشرفته
-        // توجه: این متد عمداً هم‌نام GetAllAsync نیست، چون همراه با نسخه بدون پارامتر
-        // بالا (که عضو اینترفیس است) باعث خطای CS0121 (فراخوانی مبهم) در فراخوانی‌های
-        // بدون آرگومان می‌شد.
 
         public virtual async Task<IEnumerable<T>> GetFilteredAsync(
             Expression<Func<T, bool>>? filter = null,

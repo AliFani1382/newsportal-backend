@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using NewsPortal.Application.Repositories;
 using NewsPortal.Domain.Entities;
 using NewsPortal.Infrastructure.Persistence;
@@ -61,7 +61,6 @@ public class UserRepository : Repository<User>, IUserRepository
         return dbSet
             .AnyAsync(u => u.Email == email);
     }
-
 
     public Task<bool> ExistsAsync(
         string username,

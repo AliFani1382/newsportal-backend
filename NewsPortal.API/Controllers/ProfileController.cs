@@ -1,4 +1,4 @@
-﻿using System.Security.Claims;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NewsPortal.Application.Common;
@@ -44,7 +44,6 @@ public class ProfileController : ControllerBase
         return true;
     }
 
-
     [HttpGet]
     public async Task<IActionResult> GetProfile()
     {
@@ -60,7 +59,6 @@ public class ProfileController : ControllerBase
 
         return response.ToHttpResult();
     }
-
 
     [HttpPut]
     public async Task<IActionResult> UpdateProfile(
@@ -80,7 +78,6 @@ public class ProfileController : ControllerBase
 
         return response.ToHttpResult();
     }
-
 
     [HttpPut("change-password")]
     public async Task<IActionResult> ChangePassword(

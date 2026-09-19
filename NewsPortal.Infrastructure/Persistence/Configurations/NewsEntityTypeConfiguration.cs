@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NewsPortal.Domain.Entities;
 using NewsPortal.Domain.Enums;
@@ -32,7 +32,6 @@ namespace NewsPortal.Infrastructure.Persistence.Configurations
 
             builder.Property(X => X.ImagePath)
                 .HasMaxLength(500);
-
 
             builder.Property(X => X.PublicationDate)
                 .IsRequired();

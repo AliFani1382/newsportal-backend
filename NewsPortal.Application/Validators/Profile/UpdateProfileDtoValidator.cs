@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+using FluentValidation;
 using NewsPortal.Application.DTOs.Profile;
 using System;
 using System.Collections.Generic;
@@ -17,7 +17,6 @@ namespace NewsPortal.Application.Validators.Profile
                 .WithMessage(".نام و نام خانوادگی الزامی است")
                 .MaximumLength(100)
                 .WithMessage(".نام و نام خانوادگی نمیتواند بیشتر از 100 کاراکتر باشد ");
-
 
             RuleFor(x => x.Email)
                 .NotEmpty()
