@@ -288,7 +288,7 @@ Sensitive configuration values should be provided through local configuration or
 
 ### Run the Project
 
-Clone the repository and open the solution in Visual Studio.
+Clone the repository and open the project folder in Visual Studio or another compatible .NET development environment.
 
 Restore dependencies:
 
