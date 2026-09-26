@@ -2,22 +2,22 @@
 
 namespace NewsPortal.Application.DTOs.News;
 
-public class NewsDto
+public record NewsDto
 {
-    public int Id { get; set; }
-    public string Title { get; set; } = string.Empty;
-    public string Slug { get; set; } = string.Empty;
-    public string Content { get; set; } = string.Empty;
-    public string? ImagePath { get; set; }
-    public DateTime PublicationDate { get; set; }
-    public DateTime? UpdatedAt { get; set; }
-    public string Status { get; set; } = string.Empty;
-    public int? CityId { get; set; }
-    public string? CityName { get; set; }
-    public int? CategoryId { get; set; }
-    public string? CategoryName { get; set; }
-    public int WriterId { get; set; }
-    public string? WriterName { get; set; }
-    public List<TagDto> Tags { get; set; } = [];
-    public List<NewsImageDto> Images { get; set; } = [];
+    public int Id { get; init; }
+    public string Title { get; init; } = string.Empty;
+    public string Slug { get; init; } = string.Empty;
+    public string Content { get; init; } = string.Empty;
+    public string? ImagePath { get; init; }
+    public DateTime PublicationDate { get; init; }
+    public DateTime? UpdatedAt { get; init; }
+    public string Status { get; init; } = string.Empty;
+    public int? CityId { get; init; }
+    public string? CityName { get; init; }
+    public int? CategoryId { get; init; }
+    public string? CategoryName { get; init; }
+    public int WriterId { get; init; }
+    public string? WriterName { get; init; }
+    public List<TagDto> Tags { get; init; } = [];
+    public List<NewsImageDto> Images { get; init; } = [];
 }

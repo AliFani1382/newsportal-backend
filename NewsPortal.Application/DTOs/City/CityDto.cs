@@ -1,9 +1,9 @@
 ﻿namespace NewsPortal.Application.DTOs.City;
 
-public class CityDto
+public record CityDto
 {
-    public int Id { get; set; }
-    public string? Slug { get; set; }
-    public required  string Name { get; set; } 
+    public int Id { get; init; }
+    public string? Slug { get; init; }
+    public required  string Name { get; init; } 
   
 }

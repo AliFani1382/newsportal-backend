@@ -1,6 +1,6 @@
 ﻿namespace NewsPortal.Application.DTOs.Bookmarks;
 
-public class BookmarkStatusDto
+public record BookmarkStatusDto
 {
-    public bool IsBookmarked { get; set; }
+    public bool IsBookmarked { get; init; }
 }

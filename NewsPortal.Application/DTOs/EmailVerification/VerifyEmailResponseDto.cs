@@ -1,6 +1,6 @@
 ﻿namespace NewsPortal.Application.DTOs.EmailVerification;
 
-public class VerifyEmailResponseDto
+public record VerifyEmailResponseDto
 {
-    public bool IsVerified { get; set; }
+    public bool IsVerified { get; init; }
 }

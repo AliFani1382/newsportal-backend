@@ -1,12 +1,12 @@
 ﻿namespace NewsPortal.Application.DTOs.Profile;
 
-public class UserProfileDto
+public record UserProfileDto
 {
-    public int Id { get; set; }
-    public required string UserName { get; set; }
+    public int Id { get; init; }
+    public required string UserName { get; init; }
 
-    public required string Email { get; set; }
-    public required string FullName { get; set; }
-    public required string Role { get; set; }
-    public bool IsActive { get; set; }
+    public required string Email { get; init; }
+    public required string FullName { get; init; }
+    public required string Role { get; init; }
+    public bool IsActive { get; init; }
 }

@@ -1,6 +1,6 @@
 ﻿namespace NewsPortal.Application.DTOs.Notifications;
 
-public class UnreadCountDto
+public record UnreadCountDto
 {
-    public int Count { get; set; }
+    public int Count { get; init; }
 }

@@ -1,9 +1,9 @@
 ﻿namespace NewsPortal.Application.DTOs.Category;
 
-public class CategoryDto
+public record CategoryDto
 {
-    public int Id { get; set; }
-    public string Slug { get; set; } = string.Empty;
-    public string Name { get; set; } = string.Empty;
+    public int Id { get; init; }
+    public string Slug { get; init; } = string.Empty;
+    public string Name { get; init; } = string.Empty;
    
 }

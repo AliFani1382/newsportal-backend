@@ -1,18 +1,18 @@
 ﻿namespace NewsPortal.Application.DTOs.Comments;
 
-public class CommentDto
+public record CommentDto
 {
-    public int Id { get; set; }
+    public int Id { get; init; }
 
-    public int NewsId { get; set; }
+    public int NewsId { get; init; }
 
-    public int UserId { get; set; }
+    public int UserId { get; init; }
 
-    public required string UserName { get; set; }
+    public required string UserName { get; init; }
 
-    public required string Content { get; set; }
+    public required string Content { get; init; }
 
-    public required string Status { get; set; }
+    public required string Status { get; init; }
 
-    public DateTime CreatedAt { get; set; }
+    public DateTime CreatedAt { get; init; }
 }

@@ -1,10 +1,10 @@
 ﻿namespace NewsPortal.Application.DTOs.News;
 
-public class NewsImageDto
+public record NewsImageDto
 {
-    public int Id { get; set; }
+    public int Id { get; init; }
 
-    public string ImagePath { get; set; } = string.Empty;
+    public string ImagePath { get; init; } = string.Empty;
 
-    public int DisplayOrder { get; set; }
+    public int DisplayOrder { get; init; }
 }

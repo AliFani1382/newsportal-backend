@@ -9,6 +9,7 @@ using Microsoft.OpenApi.Models;
 using NewsPortal.API.Middlewares;
 using NewsPortal.Application.Common;
 using NewsPortal.Application.Common.Interfaces;
+using NewsPortal.Application.DTOs.Reactions;
 using NewsPortal.Application.Interfaces;
 using NewsPortal.Application.Repositories;
 using NewsPortal.Application.Service.Auth;
@@ -277,6 +278,7 @@ builder.Services.AddCors(options =>
 });    
 
 var app = builder.Build();
+
 
 using (var scope = app.Services.CreateScope())
 {

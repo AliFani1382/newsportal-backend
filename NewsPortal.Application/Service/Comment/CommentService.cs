@@ -174,9 +174,6 @@ public sealed class CommentService : ICommentService
             true,
             "نظر با موفقیت رد شد");
 
-        return ApiResponse<bool>.Success(
-            true,
-            "نظر با موفقیت رد شد");
     }
 
     public async Task<ApiResponse<bool>> DeleteAsync(

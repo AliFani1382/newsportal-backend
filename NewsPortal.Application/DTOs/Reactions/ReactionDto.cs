@@ -1,10 +1,10 @@
 ﻿namespace NewsPortal.Application.DTOs.Reactions;
 
-public class ReactionDto
+public record  ReactionDto
 {
-    public int LikeCount { get; set; }
+    public int LikeCount { get; init; }
 
-    public int DislikeCount { get; set; }
+    public int DislikeCount { get; init; }
 
-    public string? MyReaction { get; set; }
+    public string? MyReaction { get; init; }
 }
