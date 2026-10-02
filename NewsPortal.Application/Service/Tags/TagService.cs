@@ -4,6 +4,7 @@ using NewsPortal.Application.DTOs.Tags;
 using NewsPortal.Application.Interfaces;
 using NewsPortal.Application.Repositories;
 using NewsPortal.Domain.Entities;
+using System.Data;
 
 namespace NewsPortal.Application.Service.Tags;
 
@@ -147,6 +148,8 @@ public sealed class TagService : ITagService
             true,
             "برچسب با موفقیت ویرایش شد.");
     }
+
+
 
     public async Task<ApiResponse<bool>> DeleteAsync(int id)
     {
