@@ -12,4 +12,3 @@
 
 # Uploaded news images generated during local development
 NewsPortal.API/wwwroot/uploads/news/*
-!NewsPortal.API/wwwroot/uploads/news/default.jpg
